@@ -623,6 +623,7 @@ blockquote p {
 /* Card header (image) */
 .card__header {
   position: relative;
+  overflow: hidden;
 }
 
 .card__image {
@@ -631,6 +632,7 @@ blockquote p {
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+  transition: all var(--dur-3) var(--ease-standard);
 }
 
 /*Card body */
@@ -658,9 +660,9 @@ blockquote p {
   color: #475569;
 }
 
-/* Optional hover affordance (subtle) */
 .card--link:hover .card__title {
-  text-decoration: underline;
+  text-decoration: none;
+  color: var(--text-strong);
 }
 
 /* Reduced motion respect */
@@ -671,6 +673,10 @@ blockquote p {
 
   .card--link:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+  .card--link:hover .card__image {
+    /*transform: scale(1.005);*/
   }
 }
 

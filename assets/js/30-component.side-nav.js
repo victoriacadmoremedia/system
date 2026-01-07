@@ -129,3 +129,63 @@
     if (parentItem) parentItem.classList.add("side-nav__item--expanded");
   });
 })();
+
+/**
+ * Side navigation – mobile drawer
+ * - Single menu markup used for both mobile (drawer) and desktop (sidebar)
+ * - Adds/removes .is-open on the drawer nav, toggles backdrop, supports ESC
+ */
+(function () {
+  const drawer = document.querySelector("[data-side-nav-drawer]");
+  const trigger = document.querySelector("[data-side-nav-trigger]");
+  const closeBtn = document.querySelector("[data-side-nav-close]");
+  const backdrop = document.querySelector("[data-side-nav-backdrop]");
+
+  if (!drawer || !trigger || !backdrop) return;
+
+  const mqDesktop = window.matchMedia("(min-width: 64rem)");
+  let lastFocused = null;
+
+  function setBackdrop(isOpen) {
+    if (isOpen) backdrop.removeAttribute("hidden");
+    else backdrop.setAttribute("hidden", "");
+  }
+
+  function openDrawer() {
+    if (mqDesktop.matches) return; // never behave like a drawer on desktop
+    lastFocused = document.activeElement;
+    drawer.classList.add("is-open");
+    trigger.setAttribute("aria-expanded", "true");
+    setBackdrop(true);
+    document.documentElement.classList.add("side-nav-drawer-open");
+    document.body.classList.add("side-nav-drawer-open");
+    (closeBtn || drawer).focus?.();
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove("is-open");
+    trigger.setAttribute("aria-expanded", "false");
+    setBackdrop(false);
+    document.documentElement.classList.remove("side-nav-drawer-open");
+    document.body.classList.remove("side-nav-drawer-open");
+    if (lastFocused && typeof lastFocused.focus === "function") {
+      lastFocused.focus();
+    }
+  }
+
+  trigger.addEventListener("click", openDrawer);
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+  backdrop.addEventListener("click", closeDrawer);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer.classList.contains("is-open")) {
+      e.preventDefault();
+      closeDrawer();
+    }
+  });
+
+  // If we cross into desktop, ensure everything resets
+  mqDesktop.addEventListener("change", () => {
+    if (mqDesktop.matches) closeDrawer();
+  });
+})();

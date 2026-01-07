@@ -20,12 +20,72 @@
 
     <main id="main" class="main" role="main">
       <div class="layout--sidebar-edge">
+        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+        <div class="side-nav-responsive__rail" data-side-nav-rail>
+          <button
+            type="button"
+            class="side-nav-responsive__trigger"
+            data-side-nav-trigger
+            aria-controls="side-nav-drawer"
+            aria-expanded="false"
+            aria-label="Open navigation"
+          >
+            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            <span class="side-nav-responsive__trigger-label">Menu</span>
+          </button>
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="/" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="/assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile: backdrop for drawer -->
+        <div
+          class="side-nav-responsive__backdrop"
+          data-side-nav-backdrop
+          hidden
+        ></div>
+
         <!-- Edge-aligned side navigation (flush left, outside container) -->
         <nav
           class="layout__sidebar layout__sidebar--edge"
           aria-label="Section navigation"
+          id="side-nav-drawer"
+          data-side-nav-drawer
         >
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="/" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="/assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+
           <div class="side-nav" data-side-nav>
+            <!-- Mobile-only drawer header -->
+            <div class="side-nav__mobile-header">
+              <span class="side-nav__mobile-title">Navigation</span>
+              <button
+                type="button"
+                class="side-nav__close"
+                data-side-nav-close
+                aria-label="Close navigation"
+              >
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+              </button>
+            </div>
+
             <h2 id="gen2-system-nav" class="visually-hidden">
               Gen 2 System Navigation
             </h2>
@@ -249,37 +309,27 @@
                   hidden
                 >
                   <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/page-types/homepage.html"
+                    <span
+                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
                     >
                       Homepage
-                    </a>
+                    </span>
                   </li>
                   <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/page-types/browse.html"
+                    <span
+                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
                     >
                       Browse Pages
-                    </a>
+                  </span>
                   </li>
                   <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/page-types/film.html"
+                    <span
+                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
                     >
-                      Film Page
-                    </a>
+                      Media Pages
+                  </span>
                   </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/page-types/podcast.html"
-                    >
-                      Podcast Page
-                    </a>
-                  </li>
+
                 </ul>
               </li>
             </ul>
@@ -305,7 +355,7 @@
             <article class="content">
               <h2 class="visually-hidden">System sections</h2>
 
-              <ul class="grid grid--auto" role="list">
+              <ul class="grid grid--cols grid--4" role="list">
                 <li>
                   <a href="/foundations/colour.html" class="card card--link">
                     <header class="card__header">
@@ -377,6 +427,34 @@
                       <p class="card__meta">
                         Common behaviours and flows such as search, browse,
                         authentication and media-first layouts.
+                      </p>
+                    </footer>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="#"
+                    class="card card--link card--disabled"
+                    aria-disabled="true"
+                  >
+                    <header class="card__header">
+                      <img
+                        src="assets/images/page-types.png"
+                        alt=""
+                        class="card__image"
+                        loading="lazy"
+                      />
+                    </header>
+
+                    <div class="card__body">
+                      <h3 class="card__title">Page Types</h3>
+                    </div>
+
+                    <footer class="card__footer">
+                      <p class="card__meta">
+                        Standard page templates for common site pages such as
+                        homepages, browse pages and content detail pages.
                       </p>
                     </footer>
                   </a>

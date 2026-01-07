@@ -3,6 +3,128 @@
    File: 30-component.side-nav.css
    ------------------------------------------------------------------------ */
 
+/* ------------------------------------------------------------------------
+   Responsive container (drawer on mobile, sidebar on desktop)
+   ------------------------------------------------------------------------ */
+
+/* Mobile trigger rail (shown < 64rem) */
+.side-nav-responsive__rail {
+  position: sticky;
+  top: var(--header-height, 0);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--base-03);
+}
+
+.side-nav-responsive__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  height: 40px;
+  padding: 0 0.9rem;
+  border: 1px solid var(--base-03);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.side-nav-responsive__trigger:hover {
+  background-color: rgb(0, 0, 0, 0.06);
+}
+
+.side-nav-responsive__trigger-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-nav-responsive__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgb(0, 0, 0, 0.45);
+}
+
+/* Prevent background scroll when drawer is open */
+.side-nav-drawer-open {
+  overflow: hidden;
+}
+
+/* Drawer behaviour on mobile */
+@media (max-width: 63.999rem) {
+  /* Keep layout single column; the nav becomes an overlay drawer */
+  [data-side-nav-drawer] {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+
+    width: min(20rem, 88vw);
+    padding: 0.75rem;
+    background: var(--surface-2);
+    border-right: 1px solid var(--base-03);
+    overflow-y: auto;
+
+    transform: translateX(-105%);
+    transition: transform var(--dur-2) var(--ease-standard);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* When open */
+  [data-side-nav-drawer].is-open {
+    transform: translateX(0);
+  }
+
+  /* Drawer header (mobile only) */
+  .side-nav__mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.25rem 0.25rem 0.75rem 0.25rem;
+    border-bottom: 1px solid var(--base-03);
+    margin-bottom: 0.75rem;
+  }
+
+  .side-nav__mobile-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .side-nav__close {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--base-03);
+    border-radius: 0.5rem;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+  }
+
+  .side-nav__close:hover {
+    background-color: rgb(0, 0, 0, 0.06);
+  }
+}
+
+/* Desktop: hide rail/backdrop + mobile header, show nav as normal sidebar */
+@media (min-width: 64rem) {
+  .side-nav-responsive__rail,
+  .side-nav-responsive__backdrop,
+  .side-nav__mobile-header {
+    display: none !important;
+  }
+}
+
 .side-nav__title {
   font-size:  var(--text-xs);
   font-weight: 600;

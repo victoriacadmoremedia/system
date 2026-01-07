@@ -1,0 +1,21 @@
+/* ------------------------------------------------------------------------
+   Component: System Banner
+   File: 30-component.system-banner.css
+   ------------------------------------------------------------------------ */
+.banner {
+  background-color: rgb(0, 0, 0, 0.05);
+  color: var(--color-on-primary);
+  padding: var(--space-12) 0;
+  border-bottom: var(--border-1);
+}
+
+.banner h1 {
+  font-size: 4rem;
+  color: var(--text-strong);
+  margin-bottom: var(--space-5);
+}
+
+.banner p {
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+}

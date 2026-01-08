@@ -5,42 +5,42 @@ window.GEN2_SIDE_NAV = {
   foundations: [
     {
       title: "Overview",
-      href: "/foundations/index.html",
+      href: "foundations/index.html",
       published: true,
     },
     {
       title: "Colour",
-      href: "/foundations/colour.html",
+      href: "foundations/colour.html",
       published: true,
-      image: "/assets/images/colour.png",
+      image: "assets/images/colour.png",
       description: "Tokens, palettes and usage guidance."
     },
     {
       title: "Typography",
-      href: "/foundations/typography.html",
+      href: "foundations/typography.html",
       published: true,
-      image: "/assets/images/typography.png",
+      image: "assets/images/typography.png",
       description: "Type scale, styles and hierarchy."
     },
     {
       title: "Spacing",
-      href: "/foundations/spacing.html",
+      href: "foundations/spacing.html",
       published: false,
-      image: "/assets/images/spacing.png",
+      image: "assets/images/spacing.png",
       description: "Spacing scale and layout rhythm."
     },
     {
       title: "Layout",
-      href: "/foundations/layout.html",
+      href: "foundations/layout.html",
       published: false,
-      image: "/assets/images/layout.png",
+      image: "assets/images/layout.png",
       description: "Lorem ipsum compnent dolor sit"
     },
     {
       title: "Elevation",
-      href: "/foundations/elevation.html",
+      href: "foundations/elevation.html",
       published: false,
-      image: "/assets/images/elevation.png",
+      image: "assets/images/elevation.png",
       description: "Lorem ipsum compnent dolor sit"
     }
   ],
@@ -53,14 +53,14 @@ window.GEN2_SIDE_NAV = {
       children: [
         {
           title: "Buttons",
-          href: "/components/actions/buttons.html",
+          href: "components/actions/buttons.html",
           published: true,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit"
         },
         {
           title: "Links",
-          href: "/components/actions/links.html",
+          href: "components/actions/links.html",
           published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit"
@@ -70,16 +70,16 @@ window.GEN2_SIDE_NAV = {
     {
       title: "Containers",
       published: true,
-      href: "/components/containers/index.html",
+      href: "components/containers/index.html",
       children: [
         {
-          title: "Modal", href: "/components/containers/modal.html",
+          title: "Modal", href: "components/containers/modal.html",
           published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit"
         },
         {
-          title: "Drawer", href: "/components/containers/drawer.html",
+          title: "Drawer", href: "components/containers/drawer.html",
           published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit"
@@ -89,18 +89,18 @@ window.GEN2_SIDE_NAV = {
     {
       title: "Navigation",
       published: true,
-      href: "/components/navigation/index.html",
+      href: "components/navigation/index.html",
       children: [
         {
           title: "Breadcrumbs",
-          href: "/components/navigation/breadcrumbs.html",
+          href: "components/navigation/breadcrumbs.html",
           published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit"
         },
         {
           title: "Tabs",
-          href: "/components/navigation/tabs.html",
+          href: "components/navigation/tabs.html",
           published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit"
@@ -112,22 +112,22 @@ window.GEN2_SIDE_NAV = {
   patterns: [
     {
       title: "Overview",
-      href: "/patterns/index.html",
+      href: "patterns/index.html",
       published: false,
-      image: "/assets/images/patterns.png",
+      image: "assets/images/patterns.png",
       description: "Reusable solutions to common UX problems."
     },
     {
       title: "Search",
-      href: "/patterns/search.html",
+      href: "patterns/search.html",
       published: false,
-      image: "/assets/images/patterns/search.png",
+      image: "assets/images/patterns/search.png",
       description: "Findability patterns and behaviours."
     },
-    { title: "Filtering", href: "/patterns/filtering.html", published: false,
+    { title: "Filtering", href: "patterns/filtering.html", published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit" },
-    { title: "Pagination", href: "/patterns/pagination.html", published: false,
+    { title: "Pagination", href: "patterns/pagination.html", published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit" }
   ],
@@ -135,18 +135,18 @@ window.GEN2_SIDE_NAV = {
   pageTypes: [
     {
       title: "Overview",
-      href: "/page-types/index.html",
+      href: "page-types/index.html",
       published: false,
-      image: "/assets/images/page-types.png",
+      image: "assets/images/page-types.png",
       description: "Page-level templates and composition guidance."
     },
-    { title: "Film page", href: "/page-types/film.html", published: false,
+    { title: "Film page", href: "page-types/film.html", published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit" },
-    { title: "Browse page", href: "/page-types/browse.html", published: false,
+    { title: "Browse page", href: "page-types/browse.html", published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit" },
-    { title: "Subject list", href: "/page-types/subjects.html", published: false,
+    { title: "Subject list", href: "page-types/subjects.html", published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit" }
   ]

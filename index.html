@@ -1,476 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gen 2 System</title>
-    <link rel="stylesheet" href="assets/css/00-core.css" />
-    <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
-    <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
-    <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
-    <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
-    <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to main content</a>
 
-    <header class="system-header" role="banner">
-      <!-- Shared header -->
-    </header>
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <title>Gen 2 System</title>
+   <script>
+      (function () {
+         var REPO = 'system';
+         // If hosted at https://username.github.io/REPO/... then use /REPO/
+         // Otherwise (local dev, custom domain, etc.) use /
+         var isProjectPages = location.hostname.endsWith('github.io');
+         var baseHref = isProjectPages ? '/' + REPO + '/' : '/';
 
-    <main id="main" class="main" role="main">
-      <div class="layout--sidebar-edge">
-        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
-        <div class="side-nav-responsive__rail" data-side-nav-rail>
-          <button
-            type="button"
-            class="side-nav-responsive__trigger"
-            data-side-nav-trigger
-            aria-controls="side-nav-drawer"
-            aria-expanded="false"
-            aria-label="Open navigation"
-          >
-            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
-              <i class="fa-solid fa-bars"></i>
-            </span>
-            <span class="side-nav-responsive__trigger-label">Menu</span>
-          </button>
-          <!-- Brand -->
-          <div class="layout__sidebar-brand">
-            <a href="/" class="sidebar-brand" aria-label="Go to homepage">
-              <img
-                src="assets/images/logo-color.png"
-                alt="Gen 2"
-                class="sidebar-brand__image"
-              />
-            </a>
-          </div>
+         var base = document.createElement('base');
+         base.href = baseHref;
+         document.head.appendChild(base);
+      })();
+   </script>
+   <!-- Now all relative URLs resolve correctly in BOTH environments -->
+   <link rel="stylesheet" href="assets/css/00-reset.css">
+   <link rel="stylesheet" href="assets/css/10-tokens.css">
+   <link rel="stylesheet" href="assets/css/00-core.css" />
+   <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
+   <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
+   <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
+   <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
+   <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
+   <link rel="icon" type="assets/images/png" href="/favicon-96x96.png" sizes="96x96" />
+   <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
+   <link rel="shortcut icon" href="assets/images/favicon.ico" />
+   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="system-header" role="banner">
+    <!-- Shared header -->
+  </header>
+
+  <main id="main" class="main" role="main">
+    <div class="layout--sidebar-edge">
+      <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+      <div class="side-nav-responsive__rail" data-side-nav-rail>
+        <button type="button" class="side-nav-responsive__trigger" data-side-nav-trigger aria-controls="side-nav-drawer"
+          aria-expanded="false" aria-label="Open navigation">
+          <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+            <i class="fa-solid fa-bars"></i>
+          </span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <!-- Brand -->
+        <div class="layout__sidebar-brand">
+          <a href="/" class="sidebar-brand" aria-label="Go to homepage">
+            <img src="assets/images/logo-color.png" alt="Gen 2" class="sidebar-brand__image" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile: backdrop for drawer -->
+      <div class="side-nav-responsive__backdrop" data-side-nav-backdrop hidden></div>
+
+      <!-- Edge-aligned side navigation (flush left, outside container) -->
+      <nav class="layout__sidebar layout__sidebar--edge" aria-label="Section navigation" id="side-nav-drawer"
+        data-side-nav-drawer>
+        <!-- Brand (desktop) -->
+        <div class="layout__sidebar-brand">
+          <a href="/" class="sidebar-brand" aria-label="Go to homepage">
+            <img src="assets/images/logo-color.png" alt="Gen 2" class="sidebar-brand__image" />
+          </a>
         </div>
 
-        <!-- Mobile: backdrop for drawer -->
-        <div
-          class="side-nav-responsive__backdrop"
-          data-side-nav-backdrop
-          hidden
-        ></div>
+        <div class="side-nav" data-side-nav>
+          <!-- Mobile-only close  -->
+            <button type="button" class="side-nav__close" data-side-nav-close aria-label="Close navigation">
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+          <h2 id="gen2-system-nav" class="visually-hidden">
+            Gen 2 System Navigation
+          </h2>
 
-        <!-- Edge-aligned side navigation (flush left, outside container) -->
-        <nav
-          class="layout__sidebar layout__sidebar--edge"
-          aria-label="Section navigation"
-          id="side-nav-drawer"
-          data-side-nav-drawer
-        >
-          <!-- Brand -->
-          <div class="layout__sidebar-brand">
-            <a href="/" class="sidebar-brand" aria-label="Go to homepage">
-              <img
-                src="assets/images/logo-color.png"
-                alt="Gen 2"
-                class="sidebar-brand__image"
-              />
-            </a>
-          </div>
-
-          <div class="side-nav" data-side-nav>
-            <!-- Mobile-only drawer header -->
-            <div class="side-nav__mobile-header">
-              <span class="side-nav__mobile-title">Navigation</span>
-              <button
-                type="button"
-                class="side-nav__close"
-                data-side-nav-close
-                aria-label="Close navigation"
-              >
-                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          <ul class="side-nav__list" role="list" id="nav-foundations">
+            <!-- Foundations -->
+            <li class="side-nav__item side-nav__item--has-children">
+              <button type="button" class="side-nav__toggle" aria-expanded="false" aria-controls="side-nav-foundations">
+                <span class="side-nav__label">Foundations</span>
+                <span class="side-nav__chev" aria-hidden="true">
+                  <i class="fa-solid fa-angle-down"></i>
+                </span>
               </button>
-            </div>
 
-            <h2 id="gen2-system-nav" class="visually-hidden">
-              Gen 2 System Navigation
-            </h2>
+              <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-foundations" hidden>
 
-            <ul class="side-nav__list" role="list">
-              <!-- Foundations -->
-              <li class="side-nav__item side-nav__item--has-children">
-                <button
-                  type="button"
-                  class="side-nav__toggle"
-                  aria-expanded="false"
-                  aria-controls="side-nav-foundations"
-                >
-                  <span class="side-nav__label">Foundations</span>
-                  <span class="side-nav__chev" aria-hidden="true">
-                    <i class="fa-solid fa-angle-down"></i>
-                  </span>
-                </button>
+              </ul>
+            </li>
 
-                <ul
-                  class="side-nav__sublist side-nav__sublist--level2"
-                  id="side-nav-foundations"
-                  hidden
-                >
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/foundations/colour.html"
-                    >
-                      Colour
-                    </a>
-                  </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/foundations/typography.html"
-                    >
-                      Typography
-                    </a>
-                  </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/foundations/spacing.html"
-                    >
-                      Spacing & Layout
-                    </a>
-                  </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/foundations/icons.html"
-                    >
-                      Icons
-                    </a>
-                  </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/foundations/themes.html"
-                    >
-                      Themes
-                    </a>
-                  </li>
-                </ul>
+            <!-- Components -->
+            <li class="side-nav__item side-nav__item--has-children">
+              <button type="button" class="side-nav__toggle" aria-expanded="false" aria-controls="side-nav-components">
+                <span class="side-nav__label">Components</span>
+                <span class="side-nav__chev" aria-hidden="true">
+                  <i class="fa-solid fa-angle-down"></i>
+                </span>
+              </button>
+              <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-components" hidden>
+              </ul>
+            </li>
+
+            <!-- Patterns -->
+            <li class="side-nav__item side-nav__item--has-children">
+              <button type="button" class="side-nav__toggle" aria-expanded="false" aria-controls="side-nav-patterns">
+                <span class="side-nav__label">Patterns</span>
+                <span class="side-nav__chev" aria-hidden="true">
+                  <i class="fa-solid fa-angle-down"></i>
+                </span>
+              </button>
+
+              <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-patterns" hidden>
+              </ul>
+            </li>
+
+            <!-- Page Types -->
+            <li class="side-nav__item side-nav__item--has-children">
+              <button type="button" class="side-nav__toggle" aria-expanded="false" aria-controls="side-nav-page-types">
+                <span class="side-nav__label">Page Types</span>
+                <span class="side-nav__chev" aria-hidden="true">
+                  <i class="fa-solid fa-angle-down"></i>
+                </span>
+              </button>
+
+              <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-page-types" hidden>
+              </ul>
+            </li>
+
+            <!-- Whitelabel -->
+            <li class="side-nav__item side-nav__item--has-children">
+            <li class="side-nav__item"><a class="side-nav__link side-nav__link--level1"
+                href="/white-labelling">White labelling</a></li>
+            </li>
+
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Main content stays constrained in a container -->
+      <section class="layout__main" aria-label="Main content">
+        <!-- Page banner / hero -->
+        <header class="banner">
+          <div class="container container--content">
+            <h1>Gen 2 System</h1>
+            <p class="banner__description">
+              The Gen 2 Media Site System defines the shared foundations,
+              components, patterns, and page types used to build and maintain
+              Cadmore Media Sites.
+            </p>
+          </div>
+        </header>
+
+        <!-- Main page content -->
+        <div class="container container--content">
+          <article class="content">
+            <h2 class="visually-hidden">System sections</h2>
+
+            <ul class="grid grid--cols grid--3" role="list">
+              <li>
+                <a href="/foundations" class="card card--link">
+                  <header class="card__header">
+                    <img src="assets/images/foundations.png" alt="" class="card__image" loading="lazy" />
+                  </header>
+
+                  <div class="card__body">
+                    <h3 class="card__title">Foundations</h3>
+                  </div>
+
+                  <footer class="card__footer">
+                    <p class="card__meta">
+                      Colour, typography, spacing, icons and themes used
+                      across Gen2 Media Sites.
+                    </p>
+                  </footer>
+                </a>
               </li>
 
-              <!-- Components -->
-              <li class="side-nav__item side-nav__item--has-children">
-                <button
-                  type="button"
-                  class="side-nav__toggle"
-                  aria-expanded="false"
-                  aria-controls="side-nav-components"
-                >
-                  <span class="side-nav__label">Components</span>
-                  <span class="side-nav__chev" aria-hidden="true">
-                    <i class="fa-solid fa-angle-down"></i>
-                  </span>
-                </button>
+              <li>
+                <a href="/components" class="card card--link">
+                  <header class="card__header">
+                    <img src="assets/images/components.png" alt="" class="card__image" loading="lazy" />
+                  </header>
 
-                <ul
-                  class="side-nav__sublist side-nav__sublist--level2"
-                  id="side-nav-components"
-                  hidden
-                >
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/components/buttons.html"
-                    >
-                      Buttons
-                    </a>
-                  </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/components/forms.html"
-                    >
-                      Forms & Inputs
-                    </a>
-                  </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/components/navigation.html"
-                    >
-                      Navigation
-                    </a>
-                  </li>
-                  <li class="side-nav__item">
-                    <a
-                      class="side-nav__link side-nav__link--level2"
-                      href="/components/media.html"
-                    >
-                      Media
-                    </a>
-                  </li>
+                  <div class="card__body">
+                    <h3 class="card__title">Components</h3>
+                  </div>
 
-                  <!-- Example tertiary level (commented out for now) -->
-                  <!--
-                  <li class="side-nav__item side-nav__item--has-children">
-                    <button
-                      type="button"
-                      class="side-nav__toggle side-nav__toggle--level2"
-                      aria-expanded="false"
-                      aria-controls="side-nav-media-player"
-                    >
-                      <span class="side-nav__label">Media Player</span>
-                      <span class="side-nav__chev" aria-hidden="true">
-                        <i class="fa-solid fa-angle-down"></i>
-                      </span>
-                    </button>
-
-                    <ul
-                      class="side-nav__sublist side-nav__sublist--level3"
-                      id="side-nav-media-player"
-                      hidden
-                    >
-                      <li class="side-nav__item">
-                        <a
-                          class="side-nav__link side-nav__link--level3"
-                          href="/components/media/video-player.html"
-                        >
-                          Video Player
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  -->
-                </ul>
+                  <footer class="card__footer">
+                    <p class="card__meta">
+                      Reusable UI building blocks with documented variants,
+                      states and usage guidance.
+                    </p>
+                  </footer>
+                </a>
               </li>
 
-              <!-- Patterns (links disabled) -->
-              <li class="side-nav__item side-nav__item--has-children">
-                <button
-                  type="button"
-                  class="side-nav__toggle"
-                  aria-expanded="false"
-                  aria-controls="side-nav-patterns"
-                >
-                  <span class="side-nav__label">Patterns & Behaviours</span>
-                  <span class="side-nav__chev" aria-hidden="true">
-                    <i class="fa-solid fa-angle-down"></i>
-                  </span>
-                </button>
+              <li>
+                <a href="/patterns" class="card card--link" aria-disabled="true">
+                  <header class="card__header">
+                    <img src="assets/images/patterns.png" alt="" class="card__image" loading="lazy" />
+                  </header>
 
-                <ul
-                  class="side-nav__sublist side-nav__sublist--level2"
-                  id="side-nav-patterns"
-                  hidden
-                >
-                  <li class="side-nav__item">
-                    <span
-                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
-                    >
-                      Search Patterns
-                    </span>
-                  </li>
-                  <li class="side-nav__item">
-                    <span
-                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
-                    >
-                      Filter & Browse
-                    </span>
-                  </li>
-                  <li class="side-nav__item">
-                    <span
-                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
-                    >
-                      Authentication & Access
-                    </span>
-                  </li>
-                  <li class="side-nav__item">
-                    <span
-                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
-                    >
-                      Media-first Content
-                    </span>
-                  </li>
-                </ul>
+                  <div class="card__body">
+                    <h3 class="card__title">Patterns</h3>
+                  </div>
+
+                  <footer class="card__footer">
+                    <p class="card__meta">
+                      Common behaviours and flows such as search, browse,
+                      authentication and media-first layouts.
+                    </p>
+                  </footer>
+                </a>
               </li>
 
-              <!-- Page Types -->
-              <li class="side-nav__item side-nav__item--has-children">
-                <button
-                  type="button"
-                  class="side-nav__toggle"
-                  aria-expanded="false"
-                  aria-controls="side-nav-page-types"
-                >
-                  <span class="side-nav__label">Page Types</span>
-                  <span class="side-nav__chev" aria-hidden="true">
-                    <i class="fa-solid fa-angle-down"></i>
-                  </span>
-                </button>
+              <li>
+                <a href="/page-types" class="card card--link" aria-disabled="true">
+                  <header class="card__header">
+                    <img src="assets/images/page-types.png" alt="" class="card__image" loading="lazy" />
+                  </header>
 
-                <ul
-                  class="side-nav__sublist side-nav__sublist--level2"
-                  id="side-nav-page-types"
-                  hidden
-                >
-                  <li class="side-nav__item">
-                    <span
-                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
-                    >
-                      Homepage
-                    </span>
-                  </li>
-                  <li class="side-nav__item">
-                    <span
-                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
-                    >
-                      Browse Pages
-                  </span>
-                  </li>
-                  <li class="side-nav__item">
-                    <span
-                      class="side-nav__link side-nav__link--level2 side-nav__link--disabled"
-                    >
-                      Media Pages
-                  </span>
-                  </li>
+                  <div class="card__body">
+                    <h3 class="card__title">Page Types</h3>
+                  </div>
 
-                </ul>
+                  <footer class="card__footer">
+                    <p class="card__meta">
+                      Standard page templates for common site pages such as
+                      homepages, browse pages and content detail pages.
+                    </p>
+                  </footer>
+                </a>
+              </li>
+
+              <li>
+                <!-- Optional: .card--disabled if not accessible -->
+                <a href="/white-labelling" class="card card--link card--disabled" aria-disabled="true">
+                  <header class="card__header">
+                    <img src="assets/images/white-labelling.png" alt="" class="card__image" loading="lazy" />
+                  </header>
+
+                  <div class="card__body">
+                    <h3 class="card__title">White labelling</h3>
+                  </div>
+
+                  <footer class="card__footer">
+                    <p class="card__meta">
+                      Nisi qui ullamco ipsum voluptate magna amet cupidatat ea consectetur.
+                    </p>
+                  </footer>
+                </a>
               </li>
             </ul>
+          </article>
+        </div>
+
+        <footer class="system-footer container container--content" role="contentinfo">
+          <div class="system-footer__inner">
+
+            <p class="system-footer__copyright footer__copyright">
+              © <span class="current-year">2026</span> Cadmore Media
+            </p>
+
+            <nav class="system-footer__nav" aria-label="Footer links">
+              <a href="https://cadmore.media/privacy-policy" class="system-footer__link" target="_blank"
+                rel="noopener noreferrer">
+                Privacy policy
+              </a>
+            </nav>
+
+            <p class="system-footer__powered">
+              <a href="https://www.cadmore.media" class="system-footer__powered-link" target="_blank"
+                rel="noopener noreferrer">
+                <span class="system-footer__powered-label">Powered by</span>
+                <img src="assets/images/c-logomark.svg" alt="" class="system-footer__powered-icon"
+                  aria-hidden="true" />
+                <span class="system-footer__powered-text">
+                  Cadmore Media
+                </span>
+              </a>
+            </p>
+
           </div>
-        </nav>
 
-        <!-- Main content stays constrained in a container -->
-        <section class="layout__main" aria-label="Main content">
-          <!-- Page banner / hero -->
-          <header class="banner">
-            <div class="container container--content">
-              <h1>Gen 2 System</h1>
-              <p class="banner__description">
-                The Gen 2 Media Site System defines the shared foundations,
-                components, patterns, and page types used to build and maintain
-                Cadmore Media Sites.
-              </p>
-            </div>
-          </header>
+        </footer>
 
-          <!-- Main page content -->
-          <div class="container container--content">
-            <article class="content">
-              <h2 class="visually-hidden">System sections</h2>
+      </section>
+    </div>
+  </main>
+  <script src="assets/js/00-core.js"></script>
+  <script src="assets/js/05-jquery.min.js"></script>
+  <script src="assets/js/30-component.side-nav.js"></script>
+  <script src="assets/js/90-system.navigation.js"></script>
+</body>
 
-              <ul class="grid grid--cols grid--4" role="list">
-                <li>
-                  <a href="/foundations/colour.html" class="card card--link">
-                    <header class="card__header">
-                      <img
-                        src="assets/images/foundations.png"
-                        alt=""
-                        class="card__image"
-                        loading="lazy"
-                      />
-                    </header>
-
-                    <div class="card__body">
-                      <h3 class="card__title">Foundations</h3>
-                    </div>
-
-                    <footer class="card__footer">
-                      <p class="card__meta">
-                        Colour, typography, spacing, icons and themes used
-                        across Gen2 Media Sites.
-                      </p>
-                    </footer>
-                  </a>
-                </li>
-
-                <li>
-                  <a href="/components/buttons.html" class="card card--link">
-                    <header class="card__header">
-                      <img
-                        src="assets/images/components.png"
-                        alt=""
-                        class="card__image"
-                        loading="lazy"
-                      />
-                    </header>
-
-                    <div class="card__body">
-                      <h3 class="card__title">Components</h3>
-                    </div>
-
-                    <footer class="card__footer">
-                      <p class="card__meta">
-                        Reusable UI building blocks with documented variants,
-                        states and usage guidance.
-                      </p>
-                    </footer>
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href="#"
-                    class="card card--link card--disabled"
-                    aria-disabled="true"
-                  >
-                    <header class="card__header">
-                      <img
-                        src="assets/images/patterns.png"
-                        alt=""
-                        class="card__image"
-                        loading="lazy"
-                      />
-                    </header>
-
-                    <div class="card__body">
-                      <h3 class="card__title">Patterns</h3>
-                    </div>
-
-                    <footer class="card__footer">
-                      <p class="card__meta">
-                        Common behaviours and flows such as search, browse,
-                        authentication and media-first layouts.
-                      </p>
-                    </footer>
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href="#"
-                    class="card card--link card--disabled"
-                    aria-disabled="true"
-                  >
-                    <header class="card__header">
-                      <img
-                        src="assets/images/page-types.png"
-                        alt=""
-                        class="card__image"
-                        loading="lazy"
-                      />
-                    </header>
-
-                    <div class="card__body">
-                      <h3 class="card__title">Page Types</h3>
-                    </div>
-
-                    <footer class="card__footer">
-                      <p class="card__meta">
-                        Standard page templates for common site pages such as
-                        homepages, browse pages and content detail pages.
-                      </p>
-                    </footer>
-                  </a>
-                </li>
-              </ul>
-            </article>
-          </div>
-        </section>
-      </div>
-    </main>
-
-    <footer class="system-footer" role="contentinfo">
-      <!-- Shared footer -->
-    </footer>
-    <script src="assets/js/00-core.js"></script>
-    <script src="assets/js/05-jquery.min.js"></script>
-    <script src="assets/js/30-component.side-nav.js"></script>
-  </body>
 </html>

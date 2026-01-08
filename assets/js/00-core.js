@@ -857,3 +857,18 @@ document.addEventListener("keydown", (e) => {
   });
 
 })(jQuery);
+
+
+  $(function () {
+    var currentYear = new Date().getFullYear();
+
+    $('.footer__copyright').each(function () {
+      var $el = $(this);
+
+      // Replace any existing year (e.g. 2023, 2024, 2025)
+      $el.text(function (_, text) {
+        return text.replace(/\b(19|20)\d{2}\b/, currentYear);
+      });
+    });
+  });
+

@@ -26,9 +26,9 @@
   gap: 0.6rem;
   height: 40px;
   padding: 0 0.9rem;
-  border: 1px solid var(--base-03);
+  border: none;
   border-radius: 0.5rem;
-  background: var(--surface);
+  background: var(--surface-1);
   color: var(--text);
   cursor: pointer;
 }
@@ -57,6 +57,7 @@
 
 /* Drawer behaviour on mobile */
 @media (max-width: 63.999rem) {
+
   /* Keep layout single column; the nav becomes an overlay drawer */
   [data-side-nav-drawer] {
     position: fixed;
@@ -104,11 +105,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--base-03);
+    border: none;
     border-radius: 0.5rem;
-    background: var(--surface);
+    background: var(--surface-2);
     color: var(--text);
     cursor: pointer;
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
   }
 
   .side-nav__close:hover {
@@ -118,15 +122,17 @@
 
 /* Desktop: hide rail/backdrop + mobile header, show nav as normal sidebar */
 @media (min-width: 64rem) {
+
   .side-nav-responsive__rail,
   .side-nav-responsive__backdrop,
-  .side-nav__mobile-header {
+  .side-nav__mobile-header,
+  .side-nav__close {
     display: none !important;
   }
 }
 
 .side-nav__title {
-  font-size:  var(--text-xs);
+  font-size: var(--text-xs);
   font-weight: 600;
   margin: 0 0 0.75rem 0;
 }
@@ -136,10 +142,10 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size:  var(--text-sm);
+  font-size: var(--text-sm);
 }
 
-.side-nav__list > * > :is(button, a) {
+.side-nav__list>*> :is(button, a) {
   font-weight: var(--weight-medium);
 }
 
@@ -239,29 +245,19 @@
 }
 
 /* Optional: add a simple indicator */
-.side-nav__item--active > .side-nav__link--active {
+.side-nav__item--active>.side-nav__link--active {
   position: relative;
-  padding-left: 1rem; /* only if your layout allows */
-}
-
-.side-nav__item--active > .side-nav__link--active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 999px;
-  background: currentColor;
-  opacity: 0.9;
+  padding-left: 1rem;
+  /* only if your layout allows */
 }
 
 /* Optional: expanded parent section hint (if you add .side-nav__item--expanded) */
-.side-nav__item--expanded > .side-nav__toggle .side-nav__label {
+.side-nav__item--expanded>.side-nav__toggle .side-nav__label {
   font-weight: 600;
 }
 
 
 /* Hidden attribute is the collapse mechanism */
-[hidden] { display: none !important; }
+[hidden] {
+  display: none !important;
+}

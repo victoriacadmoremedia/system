@@ -18,7 +18,7 @@ window.GEN2_SIDE_NAV = {
     {
       title: "Typography",
       href: "foundations/typography.html",
-      published: true,
+      published: false,
       image: "assets/images/typography.png",
       description: "Type scale, styles and hierarchy."
     },
@@ -46,6 +46,11 @@ window.GEN2_SIDE_NAV = {
   ],
 
   // Components has a 3rd level: groups -> pages
+
+  componentsOverview: [
+    { title: "Overview", href: "components/index.html", published: true }
+  ],
+
   components: [
     {
       title: "Actions",
@@ -54,7 +59,7 @@ window.GEN2_SIDE_NAV = {
         {
           title: "Buttons",
           href: "components/actions/buttons.html",
-          published: true,
+          published: false,
           image: "https://placehold.co/600x400",
           description: "Lorem ipsum compnent dolor sit"
         },
@@ -113,9 +118,7 @@ window.GEN2_SIDE_NAV = {
     {
       title: "Overview",
       href: "patterns/index.html",
-      published: false,
-      image: "assets/images/patterns.png",
-      description: "Reusable solutions to common UX problems."
+      published: true
     },
     {
       title: "Search",
@@ -124,31 +127,41 @@ window.GEN2_SIDE_NAV = {
       image: "assets/images/patterns/search.png",
       description: "Findability patterns and behaviours."
     },
-    { title: "Filtering", href: "patterns/filtering.html", published: false,
-          image: "https://placehold.co/600x400",
-          description: "Lorem ipsum compnent dolor sit" },
-    { title: "Pagination", href: "patterns/pagination.html", published: false,
-          image: "https://placehold.co/600x400",
-          description: "Lorem ipsum compnent dolor sit" }
+    {
+      title: "Filtering", href: "patterns/filtering.html", published: false,
+      image: "https://placehold.co/600x400",
+      description: "Lorem ipsum compnent dolor sit"
+    },
+    {
+      title: "Pagination", href: "patterns/pagination.html", published: false,
+      image: "https://placehold.co/600x400",
+      description: "Lorem ipsum compnent dolor sit"
+    }
   ],
 
   pageTypes: [
     {
       title: "Overview",
       href: "page-types/index.html",
-      published: false,
+      published: true,
       image: "assets/images/page-types.png",
       description: "Page-level templates and composition guidance."
     },
-    { title: "Film page", href: "page-types/film.html", published: false,
-          image: "https://placehold.co/600x400",
-          description: "Lorem ipsum compnent dolor sit" },
-    { title: "Browse page", href: "page-types/browse.html", published: false,
-          image: "https://placehold.co/600x400",
-          description: "Lorem ipsum compnent dolor sit" },
-    { title: "Subject list", href: "page-types/subjects.html", published: false,
-          image: "https://placehold.co/600x400",
-          description: "Lorem ipsum compnent dolor sit" }
+    {
+      title: "Film page", href: "page-types/film.html", published: false,
+      image: "https://placehold.co/600x400",
+      description: "Lorem ipsum compnent dolor sit"
+    },
+    {
+      title: "Browse page", href: "page-types/browse.html", published: false,
+      image: "https://placehold.co/600x400",
+      description: "Lorem ipsum compnent dolor sit"
+    },
+    {
+      title: "Subject list", href: "page-types/subjects.html", published: false,
+      image: "https://placehold.co/600x400",
+      description: "Lorem ipsum compnent dolor sit"
+    }
   ]
 };
 
@@ -246,23 +259,23 @@ window.GEN2_SIDE_NAV = {
     return $li;
   }
 
-  function injectSection(selector, items, mode) {
+  function injectSection(selector, items, mode, opts) {
     var $target = $(selector);
     if (!$target.length) return;
 
-    $target.empty();
+    var options = opts || {};
+    if (!options.append) $target.empty();
 
     if (mode === "groups") {
-      items.forEach(function (group, i) {
+      (items || []).forEach(function (group, i) {
         $target.append(renderGroup(group, i, $target.attr("id") || "nav"));
       });
     } else {
-      items.forEach(function (item) {
+      (items || []).forEach(function (item) {
         $target.append(renderItem(item));
       });
     }
 
-    // If any injected item is active, auto-open the parent accordion (top level)
     if ($target.find(".is-active").length) {
       var id = $target.attr("id");
       if (id) {
@@ -344,9 +357,10 @@ window.GEN2_SIDE_NAV = {
 
     // Existing side-nav injection
     injectSection("#side-nav-foundations", window.GEN2_SIDE_NAV.foundations, "items");
-    injectSection("#side-nav-components", window.GEN2_SIDE_NAV.components, "groups");
+    injectSection("#side-nav-components", window.GEN2_SIDE_NAV.componentsOverview, "items");
+    injectSection("#side-nav-components", window.GEN2_SIDE_NAV.components, "groups", { append: true });
     injectSection("#side-nav-patterns", window.GEN2_SIDE_NAV.patterns, "items");
-    injectSection("#nav-page-types", window.GEN2_SIDE_NAV.pageTypes, "items");
+    injectSection("#side-nav-page-types", window.GEN2_SIDE_NAV.pageTypes, "items");
 
     // Overview grids (only run if the UL exists on that page)
 

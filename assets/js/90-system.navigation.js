@@ -18,7 +18,7 @@ window.GEN2_SIDE_NAV = {
     {
       title: "Typography",
       href: "foundations/typography.html",
-      published: false,
+      published: true,
       image: "assets/images/typography.png",
       description: "Type scale, styles and hierarchy."
     },

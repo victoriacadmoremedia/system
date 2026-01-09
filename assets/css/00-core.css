@@ -354,11 +354,12 @@ ul {
 
 .list--standard {
   list-style: disc;
-  padding-left: 1.25rem; /* restores indentation */
+  padding-left: 1.25rem;
+  /* restores indentation */
   margin: 1rem 0;
 }
 
-.list--standard > li {
+.list--standard>li {
   margin: 0.25rem 0;
 }
 
@@ -367,10 +368,10 @@ ol {
 }
 
 figure {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 /* ==========================================================================
@@ -818,13 +819,17 @@ blockquote p {
 }
 
 .content__figure img {
-    margin-bottom: var(--space-2);
-    border-radius: var(--radius-xs);
+  margin-bottom: var(--space-2);
+  border-radius: var(--radius-xs);
 }
 
 .content__figure figcaption {
-    font-size: var(--text-sm);
-    color: var(--text-muted);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.content--prose .grid {
+  gap: var(--space-12);
 }
 
 /* ==========================================================================
@@ -927,6 +932,77 @@ blockquote p {
 }
 
 
+/* ------------------------------------------------------------------------
+   Component: Table
+   ------------------------------------------------------------------------ */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-block: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Header */
+.table thead th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.75rem 0.75rem;
+  border-bottom: 1px solid var(--base-03, #e5e7eb);
+  vertical-align: bottom;
+}
+
+/* Body cells */
+.table tbody th,
+.table tbody td {
+  padding: 0.75rem 0.75rem;
+  border-bottom: 1px solid var(--base-03, #e5e7eb);
+  vertical-align: top;
+  text-align: start;
+}
+
+/* Row headers (first column) */
+.table tbody th[scope="row"] {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Remove last divider */
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Optional: subtle row rhythm (very light, structural only) */
+.table tbody tr {
+  scroll-margin-top: 4rem;
+}
+
+/* Improve readability on narrow viewports */
+@media (max-width: 640px) {
+  .table thead {
+    display: none;
+  }
+
+  .table tbody tr {
+    display: block;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--base-03, #e5e7eb);
+  }
+
+  .table tbody th,
+  .table tbody td {
+    display: block;
+    padding: 0.25rem 0;
+    border: none;
+  }
+
+  .table tbody th[scope="row"] {
+    font-weight: 600;
+  }
+}
 
 
 

@@ -158,178 +158,225 @@
 
                         <li class="breadcrumb__item">
                            <a href="/foundations/" class="breadcrumb__link">
-                              Foundations
+                              Section
                            </a>
                         </li>
 
-                        <li class="breadcrumb__item" aria-current="page">Typography</li>
+                        <li class="breadcrumb__item" aria-current="page">Page</li>
                      </ol>
                   </nav>
 
-                  <h1>Typography</h1>
+                  <h1>Header</h1>
                   <p class="banner__description">
-                     Typography defines how content is read, scanned and understood across Gen 2 Media Sites.
+                     Et esse anim dolor mollit non do deserunt.
                   </p>
                </div>
             </header>
 
-            <!-- Main page content -->
-            <div class="container container--content">
-               <article class="content content--prose">
+<!-- Main page content -->
+<div class="container container--content">
+  <article class="content content--prose">
 
-                  <!-- 1) Intro / Overview -->
-                  <section>
-                     <h2>Overview</h2>
+    <!-- 1) Intro / Overview -->
+    <section>
+      <h2>Overview</h2>
 
-                     <p>
-                        Typography defines how content is read, scanned and understood across Gen 2
-                        Media Sites.
-                     </p>
+      <p>[One to two sentences describing what this page defines.]</p>
 
-                     <p>
-                        The typography system prioritises readability, clear hierarchy and
-                        consistency to support long-form, academic and media-rich content.
-                     </p>
+      <p>[Optional lead-in sentence for a short list.]</p>
 
-                     <p>
-                        This page defines typographic roles, scales and usage principles.<br />
-                        Font selection and site-specific adjustments are documented under
-                        <strong>Foundations → Themes</strong>.
-                     </p>
-                  </section>
+      <ul class="list--standard">
+        <li><strong>[Key concept]</strong> – [short definition]</li>
+        <li><strong>[Key concept]</strong> – [short definition]</li>
+      </ul>
 
-                  <hr />
+      <p>[Optional paragraph expanding on why this matters.]</p>
 
-                  <section>
-                     <h2>Principles</h2>
+      <p>
+        [Optional note linking to related foundations, e.g. Themes, Tokens, etc.]
+      </p>
+    </section>
 
-                     <p>
-                        Gen 2 typography is content-first and neutral by default. It exists to support
-                        reading and comprehension rather than visual expression.
-                     </p>
+    <hr />
 
-                     <p>
-                        Hierarchy must be clear and predictable so users can understand page
-                        structure at a glance. Font sizes and spacing follow a defined scale to
-                        avoid arbitrary variation and to maintain rhythm across page types.
-                     </p>
-                  </section>
+    <!-- 2) High-level model (Roles / Contexts / Scale / etc.) -->
+    <section>
+      <h2>[Section title]</h2>
 
-                  <hr />
+      <p>[One sentence introducing the model.]</p>
 
-                  <section>
-                     <h2>Typographic roles</h2>
+      <ul class="list--standard">
+        <li><strong>[Item]</strong> – [meaning]</li>
+        <li><strong>[Item]</strong> – [meaning]</li>
+        <li><strong>[Item]</strong> – [meaning]</li>
+      </ul>
 
-                     <p>
-                        Typography in Gen 2 is defined by role, not by individual font styles. Roles
-                        describe how text is used within the interface.
-                     </p>
+      <p>[Optional rule-of-thumb statement.]</p>
+    </section>
 
-                     <p>
-                        <strong>Body text</strong> is used for primary reading content, including
-                        articles, descriptive copy and supporting text. It is optimised for long-form
-                        reading, with comfortable line length, spacing and a regular font weight.
-                     </p>
+    <hr />
 
-                     <p>
-                        <strong>Headings</strong> establish structure and hierarchy. They support
-                        scanning and content organisation, and heading levels must reflect document
-                        structure without skipping levels.
-                     </p>
+    <!-- 3) Visual explainer section (copy + figure, no grid needed unless you want it) -->
+    <section>
+      <h2>[Section title]</h2>
 
-                     <p>
-                        <strong>UI text</strong> supports interaction and navigation, such as
-                        buttons, links, navigation items, form labels and metadata. Labels should
-                        remain concise and prioritise clarity over tone.
-                     </p>
+      <p>[Short explanation of the concept.]</p>
 
-                     <p>
-                        <strong>Metadata and supporting text</strong> provides context without
-                        distraction. It should remain visually subordinate to body text while
-                        maintaining sufficient contrast for accessibility.
-                     </p>
-                  </section>
+      <figure class="content__figure">
+        <img
+          src="https://placehold.co/600x400"
+          alt="[Describe what the diagram shows]"
+          loading="lazy"
+          width="1600"
+          height="900"
+        />
+        <figcaption>
+          [One sentence describing what the reader should take away.]
+        </figcaption>
+      </figure>
+    </section>
 
-                  <hr />
+    <hr />
 
+    <!-- 4) Reusable “role” block pattern -->
+    <section>
+      <h2>[Role or topic title]</h2>
 
-                  <section>
-                     <h2>Scale, spacing and flow</h2>
+      <!-- 4a) Purpose + Used for + figure -->
+      <div class="grid grid--cols grid--2">
+        <div class="content__col">
+          <h3>Purpose</h3>
+          <p>[What this role/pattern is for, in 1–3 sentences.]</p>
 
-                     <p>
-                        Gen 2 uses a defined type scale shared across page types to maintain
-                        consistent hierarchy and rhythm. Only documented scale steps should be used.
-                     </p>
+          <h3>Used for</h3>
+          <ul class="list--standard">
+            <li>[Example use]</li>
+            <li>[Example use]</li>
+            <li>[Example use]</li>
+          </ul>
+        </div>
 
-                     <p>
-                        Readable line length is critical for long-form content. Text columns should
-                        avoid excessive width and favour constrained reading areas. Body text uses
-                        generous line height to support scanning, while headings may use tighter
-                        spacing. Spacing remains consistent across similar roles.
-                     </p>
+        <figure class="content__figure">
+          <img
+            src="https://placehold.co/600x400"
+            alt="[Describe what the diagram shows]"
+            loading="lazy"
+            width="1600"
+            height="900"
+          />
+          <figcaption>[What the figure demonstrates.]</figcaption>
+        </figure>
+      </div>
 
-                     <p>
-                        Text is left-aligned by default to support reading order. Centred text
-                        should be used sparingly, and justified text is avoided due to readability
-                        issues.
-                     </p>
-                  </section>
+      <hr />
 
-                  <hr />
+      <!-- 4b) Variants / contexts / states + figure (optional) -->
+      <div class="grid grid--cols grid--2">
+        <div class="content__col">
+          <h3>[Role/topic] in different contexts</h3>
 
+          <h4>[Variant / context / state name]</h4>
+          <ul class="list--standard">
+            <li>[Guidance point]</li>
+            <li>[Guidance point]</li>
+            <li>[Guidance point]</li>
+          </ul>
 
-                  <section>
-                     <h2>Emphasis, links and accessibility</h2>
+          <h4>[Variant / context / state name]</h4>
+          <ul class="list--standard">
+            <li>[Guidance point]</li>
+            <li>[Guidance point]</li>
+            <li>[Guidance point]</li>
+          </ul>
 
-                     <p>
-                        Emphasis should be used sparingly and conveyed through font weight or
-                        semantic elements rather than colour alone. Excessive bolding within body
-                        content should be avoided.
-                     </p>
+          <p>[One-line rule: what can change vs what cannot.]</p>
+        </div>
 
-                     <p>
-                        Links should be clearly identifiable without disrupting reading flow or
-                        becoming indistinguishable from surrounding text.
-                     </p>
+        <figure class="content__figure">
+          <img
+            src="https://placehold.co/600x400"
+            alt="[Describe what the diagram shows]"
+            loading="lazy"
+            width="1600"
+            height="900"
+          />
+          <figcaption>[What the figure demonstrates.]</figcaption>
+        </figure>
+      </div>
 
-                     <p>
-                        Typography must support inclusive use. Text must be resizable without loss
-                        of content or functionality, contrast must remain sufficient, and spacing
-                        must not hinder readability.
-                     </p>
+      <hr />
 
-                     <p>
-                        Typography behaves consistently across all contexts. Hierarchy and meaning
-                        do not change between standard and emphasis surfaces. Where typography
-                        appears on emphasis backgrounds, contrast may be adjusted without altering
-                        intent.
-                     </p>
-                  </section>
+      <!-- 4c) Naming / rules (optional) -->
+      <h3>[Naming / Rules]</h3>
+      <p>[Short naming rule or guidance.]</p>
 
-                  <hr />
+      <ul class="list--standard">
+        <li>[Rule]</li>
+        <li>[Rule]</li>
+        <li>[Rule]</li>
+      </ul>
 
+      <hr />
 
-                  <section>
-                     <h2>Summary</h2>
+      <!-- 4d) Reference table (optional) -->
+      <h3>[Reference table title]</h3>
 
-                     <p>
-                        Typography in Gen 2 is role-driven, predictable and readability-focused.
-                        Themes may adapt visual appearance, but not typographic intent.
-                     </p>
+      <p>[When/why this table exists.]</p>
 
-                     <h3>System anchor sentence</h3>
-                     <p>
-                        <strong>Gen 2 typography prioritises clarity, hierarchy and readability across all
-                           contexts.</strong>
-                     </p>
-                  </section>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">[Column A]</th>
+            <th scope="col">[Column B]</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">[Row label]</th>
+            <td>[Row description]</td>
+          </tr>
+          <tr>
+            <th scope="row">[Row label]</th>
+            <td>[Row description]</td>
+          </tr>
+        </tbody>
+      </table>
 
+      <p>[Optional note about edge cases / exceptions.]</p>
+    </section>
 
+    <hr />
 
+    <!-- 5) Guidance section (accessibility, usage notes, do/don’t) -->
+    <section>
+      <h2>[Guidance title]</h2>
 
+      <p>[Intro sentence.]</p>
 
-               </article>
-            </div>
+      <ul class="list--standard">
+        <li>[Guideline]</li>
+        <li>[Guideline]</li>
+        <li>[Guideline]</li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <!-- 6) Summary / recap -->
+    <section>
+      <h2>Summary</h2>
+
+      <ul class="list--standard">
+        <li>[Key takeaway]</li>
+        <li>[Key takeaway]</li>
+        <li>[Key takeaway]</li>
+      </ul>
+
+      <p>[Final rule-of-thumb sentence.]</p>
+    </section>
+
+  </article>
+</div>
 
             <footer class="system-footer container container--content" role="contentinfo">
                <div class="system-footer__inner">

@@ -36,17 +36,11 @@
 
   /* Heading sizes */
   --h1: 2.25rem;
-  /* 36px */
-  --h2: 1.875rem;
-  /* 30px */
-  --h3: 1.5rem;
-  /* 24px */
-  --h4: 1.25rem;
-  /* 20px */
-  --h5: 1.125rem;
-  /* 18px */
-  --h6: 1rem;
-  /* 16px */
+  --h2: 1.5rem;
+  --h3: 1.25rem;
+  --h4: 1.125rem;
+  --h5: 1rem;
+  --h6: 0.875rem;
 
   /* Body text */
   --p: 1rem;
@@ -451,7 +445,7 @@ li {
 
 hr {
   border: none;
-  border-top: var(--border-1) solid var(--border);
+  border-top: var(--border-1);
   margin: var(--space-6) 0;
 }
 

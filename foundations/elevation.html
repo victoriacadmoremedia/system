@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gen 2 System</title>
+    <script>
+      (function () {
+        var REPO = "system";
+        // If hosted at https://username.github.io/REPO/... then use /REPO/
+        // Otherwise (local dev, custom domain, etc.) use /
+        var isProjectPages = location.hostname.endsWith("github.io");
+        var baseHref = isProjectPages ? "/" + REPO + "/" : "/";
+
+        var base = document.createElement("base");
+        base.href = baseHref;
+        document.head.appendChild(base);
+      })();
+    </script>
+    <!-- Now all relative URLs resolve correctly in BOTH environments -->
+    <link rel="stylesheet" href="assets/css/00-reset.css" />
+    <link rel="stylesheet" href="assets/css/10-tokens.css" />
+    <link rel="stylesheet" href="assets/css/00-core.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
+    <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
+    <link
+      rel="icon"
+      type="assets/images/png"
+      href="/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="system-header" role="banner">
+      <!-- Shared header -->
+    </header>
+
+    <main id="main" class="main" role="main">
+      <div class="layout--sidebar-edge">
+        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+        <div class="side-nav-responsive__rail" data-side-nav-rail>
+          <button
+            type="button"
+            class="side-nav-responsive__trigger"
+            data-side-nav-trigger
+            aria-controls="side-nav-drawer"
+            aria-expanded="false"
+            aria-label="Open navigation"
+          >
+            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile: backdrop for drawer -->
+        <div
+          class="side-nav-responsive__backdrop"
+          data-side-nav-backdrop
+          hidden
+        ></div>
+
+        <!-- Edge-aligned side navigation (flush left, outside container) -->
+        <nav
+          class="layout__sidebar layout__sidebar--edge"
+          aria-label="Section navigation"
+          id="side-nav-drawer"
+          data-side-nav-drawer
+        >
+          <!-- Brand (desktop) -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav" data-side-nav>
+            <!-- Mobile-only close  -->
+            <button
+              type="button"
+              class="side-nav__close"
+              data-side-nav-close
+              aria-label="Close navigation"
+            >
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <h2 id="Gen 2-system-nav" class="visually-hidden">
+              Gen 2 System Navigation
+            </h2>
+
+            <ul class="side-nav__list" role="list" id="nav-foundations">
+              <!-- Foundations -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-foundations"
+                >
+                  <span class="side-nav__label">Foundations</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-foundations"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Components -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-components"
+                >
+                  <span class="side-nav__label">Components</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-components"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Patterns -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-patterns"
+                >
+                  <span class="side-nav__label">Patterns</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-patterns"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Page Types -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-page-types"
+                >
+                  <span class="side-nav__label">Page Types</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-page-types"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Whitelabel -->
+              <li class="side-nav__item">
+                <a
+                  class="side-nav__link side-nav__link--level1"
+                  href="/foundations/index.html"
+                  >White labelling</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main content stays constrained in a container -->
+        <section class="layout__main" aria-label="Main content">
+          <!-- Page banner / hero -->
+          <header class="banner">
+            <div class="container container--content">
+              <!-- Breadcrumb -->
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb__list">
+                  <li class="breadcrumb__item">
+                    <a
+                      href="./"
+                      class="breadcrumb__link breadcrumb__link--home"
+                    >
+                      <i
+                        class="fa-solid fa-house-chimney"
+                        aria-hidden="true"
+                      ></i>
+                      <span class="visually-hidden">Gen 2 System</span>
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item">
+                    <a href="/foundations/" class="breadcrumb__link">
+                      Section
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item" aria-current="page">Page</li>
+                </ol>
+              </nav>
+
+              <h1>Elevation</h1>
+
+              <p>
+                Elevation defines how depth and surface separation are
+                communicated across Gen 2 Media Sites.
+              </p>
+
+            </div>
+          </header>
+
+          <!-- Main page content -->
+          <div class="container container--content">
+            <article class="content content--prose">
+              <!-- Overview -->
+              <section>
+                <h2>Overview</h2>
+
+                <p>
+                  Elevation uses depth to distinguish surfaces, reinforce
+                  hierarchy and support focus within the interface.
+                </p>
+
+                <p>
+                  Client branding and site-specific adjustments are documented
+                  under <a href="white-labelling">White labelling</a>.
+                </p>
+
+                <figure class="content__figure">
+                  <img
+                    src="https://placehold.co/800x450?text=Elevation+layers+diagram"
+                    alt="Diagram showing multiple interface surfaces layered at different elevation levels to illustrate background, foreground and overlay relationships"
+                  />
+                  <figcaption>
+                    Common elevation layers showing background surfaces,
+                    elevated content and foreground overlays.
+                  </figcaption>
+                </figure>
+              </section>
+              <hr />
+
+              <!-- Principles -->
+              <section>
+                <h2>Principles</h2>
+
+                <p>
+                  Gen 2 elevation is functional and restrained by default. It
+                  exists to clarify structure and focus, not to add decoration.
+                </p>
+
+                <p>
+                  Elevation reinforces hierarchy by separating foreground
+                  surfaces from background content. Similar surfaces should
+                  appear at consistent depths across the system.
+                </p>
+
+                <p>
+                  Elevation should work alongside layout and spacing. It must
+                  not be used to compensate for unclear structure or visual
+                  clutter.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Surfaces and hierarchy -->
+              <section>
+                <h2>Surfaces and hierarchy</h2>
+
+                <p>
+                  Elevation is applied to surfaces, not individual elements.
+                </p>
+
+                <p>
+                  Common elevated surfaces include cards, panels and overlays.
+                  These surfaces sit above base content to indicate importance,
+                  focus or temporary interaction.
+                </p>
+
+                <p>
+                  Lower elevation signals foundational content. Increased
+                  elevation signals foreground focus or interaction. Elevation
+                  should remain predictable and limited.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Interaction and accessibility -->
+              <section>
+                <h2>Interaction and accessibility</h2>
+
+                <p>
+                  Elevation may respond subtly to interaction or state, such as
+                  hover or focus, reinforcing affordance without distraction.
+                </p>
+
+                <p>
+                  Depth cues should not rely on shadow alone. Borders, spacing
+                  and contrast should support separation where needed, and
+                  elevation must not interfere with readability, focus order or
+                  keyboard navigation.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Summary -->
+              <section>
+                <h2>Summary</h2>
+
+                <p>
+                  Elevation in Gen 2 provides clear surface separation and focus
+                  through consistent, restrained use of depth.
+                </p>
+
+                 <!-- System anchor sentence -->
+              <p class="content--prose__emphasis">
+                    Gen 2 elevation uses restrained, consistent depth to
+                    reinforce hierarchy and surface separation across all
+                    contexts.
+                </p>
+              </section>
+
+             
+            </article>
+          </div>
+
+          <footer
+            class="system-footer container container--content"
+            role="contentinfo"
+          >
+            <div class="system-footer__inner">
+              <p class="system-footer__copyright footer__copyright">
+                © <span class="current-year">2026</span> Cadmore Media
+              </p>
+
+              <nav class="system-footer__nav" aria-label="Footer links">
+                <a
+                  href="https://cadmore.media/privacy-policy"
+                  class="system-footer__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy policy
+                </a>
+              </nav>
+
+              <p class="system-footer__powered">
+                <a
+                  href="https://www.cadmore.media"
+                  class="system-footer__powered-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="system-footer__powered-label">Powered by</span>
+                  <img
+                    src="assets/images/c-logomark.svg"
+                    alt=""
+                    class="system-footer__powered-icon"
+                    aria-hidden="true"
+                  />
+                  <span class="system-footer__powered-text">
+                    Cadmore Media
+                  </span>
+                </a>
+              </p>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <script src="assets/js/00-core.js"></script>
+    <script src="assets/js/05-jquery.min.js"></script>
+    <script src="assets/js/30-component.side-nav.js"></script>
+    <script src="assets/js/90-system.navigation.js"></script>
+  </body>
+</html>

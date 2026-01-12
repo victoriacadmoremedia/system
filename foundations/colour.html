@@ -1,622 +1,707 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Gen 2 System</title>
-   <script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gen 2 System</title>
+    <script>
       (function () {
-         var REPO = "system";
-         // If hosted at https://username.github.io/REPO/... then use /REPO/
-         // Otherwise (local dev, custom domain, etc.) use /
-         var isProjectPages = location.hostname.endsWith("github.io");
-         var baseHref = isProjectPages ? "/" + REPO + "/" : "/";
+        var REPO = "system";
+        // If hosted at https://username.github.io/REPO/... then use /REPO/
+        // Otherwise (local dev, custom domain, etc.) use /
+        var isProjectPages = location.hostname.endsWith("github.io");
+        var baseHref = isProjectPages ? "/" + REPO + "/" : "/";
 
-         var base = document.createElement("base");
-         base.href = baseHref;
-         document.head.appendChild(base);
+        var base = document.createElement("base");
+        base.href = baseHref;
+        document.head.appendChild(base);
       })();
-   </script>
-   <!-- Now all relative URLs resolve correctly in BOTH environments -->
-   <link rel="stylesheet" href="assets/css/00-reset.css" />
-   <link rel="stylesheet" href="assets/css/10-tokens.css" />
-   <link rel="stylesheet" href="assets/css/00-core.css" />
-   <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
-   <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
-   <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
-   <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
-   <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
-   <link rel="icon" type="assets/images/png" href="/favicon-96x96.png" sizes="96x96" />
-   <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
-   <link rel="shortcut icon" href="assets/images/favicon.ico" />
-   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
-</head>
+    </script>
+    <!-- Now all relative URLs resolve correctly in BOTH environments -->
+    <link rel="stylesheet" href="assets/css/00-reset.css" />
+    <link rel="stylesheet" href="assets/css/10-tokens.css" />
+    <link rel="stylesheet" href="assets/css/00-core.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
+    <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
+    <link
+      rel="icon"
+      type="assets/images/png"
+      href="/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+  </head>
 
-<body>
-   <a class="skip-link" href="#main">Skip to main content</a>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-   <header class="system-header" role="banner">
+    <header class="system-header" role="banner">
       <!-- Shared header -->
-   </header>
+    </header>
 
-   <main id="main" class="main" role="main">
+    <main id="main" class="main" role="main">
       <div class="layout--sidebar-edge">
-         <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
-         <div class="side-nav-responsive__rail" data-side-nav-rail>
-            <button type="button" class="side-nav-responsive__trigger" data-side-nav-trigger
-               aria-controls="side-nav-drawer" aria-expanded="false" aria-label="Open navigation">
-               <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
-                  <i class="fa-solid fa-bars"></i>
-               </span>
-               <span class="visually-hidden">Menu</span>
+        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+        <div class="side-nav-responsive__rail" data-side-nav-rail>
+          <button
+            type="button"
+            class="side-nav-responsive__trigger"
+            data-side-nav-trigger
+            aria-controls="side-nav-drawer"
+            aria-expanded="false"
+            aria-label="Open navigation"
+          >
+            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile: backdrop for drawer -->
+        <div
+          class="side-nav-responsive__backdrop"
+          data-side-nav-backdrop
+          hidden
+        ></div>
+
+        <!-- Edge-aligned side navigation (flush left, outside container) -->
+        <nav
+          class="layout__sidebar layout__sidebar--edge"
+          aria-label="Section navigation"
+          id="side-nav-drawer"
+          data-side-nav-drawer
+        >
+          <!-- Brand (desktop) -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav" data-side-nav>
+            <!-- Mobile-only close  -->
+            <button
+              type="button"
+              class="side-nav__close"
+              data-side-nav-close
+              aria-label="Close navigation"
+            >
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
-            <!-- Brand -->
-            <div class="layout__sidebar-brand">
-               <a href="./" class="sidebar-brand" aria-label="Go to homepage">
-                  <img src="assets/images/logo-color.png" alt="Gen 2" class="sidebar-brand__image" />
-               </a>
-            </div>
-         </div>
+            <h2 id="Gen 2-system-nav" class="visually-hidden">
+              Gen 2 System Navigation
+            </h2>
 
-         <!-- Mobile: backdrop for drawer -->
-         <div class="side-nav-responsive__backdrop" data-side-nav-backdrop hidden></div>
+            <ul class="side-nav__list" role="list" id="nav-foundations">
+              <!-- Foundations -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-foundations"
+                >
+                  <span class="side-nav__label">Foundations</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
 
-         <!-- Edge-aligned side navigation (flush left, outside container) -->
-         <nav class="layout__sidebar layout__sidebar--edge" aria-label="Section navigation" id="side-nav-drawer"
-            data-side-nav-drawer>
-            <!-- Brand (desktop) -->
-            <div class="layout__sidebar-brand">
-               <a href="./" class="sidebar-brand" aria-label="Go to homepage">
-                  <img src="assets/images/logo-color.png" alt="Gen 2" class="sidebar-brand__image" />
-               </a>
-            </div>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-foundations"
+                  hidden
+                ></ul>
+              </li>
 
-            <div class="side-nav" data-side-nav>
-               <!-- Mobile-only close  -->
-               <button type="button" class="side-nav__close" data-side-nav-close aria-label="Close navigation">
-                  <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-               </button>
-               <h2 id="Gen 2-system-nav" class="visually-hidden">
-                  Gen 2 System Navigation
-               </h2>
+              <!-- Components -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-components"
+                >
+                  <span class="side-nav__label">Components</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-components"
+                  hidden
+                ></ul>
+              </li>
 
-               <ul class="side-nav__list" role="list" id="nav-foundations">
-                  <!-- Foundations -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-foundations">
-                        <span class="side-nav__label">Foundations</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
+              <!-- Patterns -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-patterns"
+                >
+                  <span class="side-nav__label">Patterns</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
 
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-foundations" hidden></ul>
-                  </li>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-patterns"
+                  hidden
+                ></ul>
+              </li>
 
-                  <!-- Components -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-components">
-                        <span class="side-nav__label">Components</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-components" hidden></ul>
-                  </li>
+              <!-- Page Types -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-page-types"
+                >
+                  <span class="side-nav__label">Page Types</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
 
-                  <!-- Patterns -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-patterns">
-                        <span class="side-nav__label">Patterns</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-page-types"
+                  hidden
+                ></ul>
+              </li>
 
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-patterns" hidden></ul>
-                  </li>
+              <!-- Whitelabel -->
+              <li class="side-nav__item">
+                <a
+                  class="side-nav__link side-nav__link--level1"
+                  href="/foundations/index.html"
+                  >White labelling</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-                  <!-- Page Types -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-page-types">
-                        <span class="side-nav__label">Page Types</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
-
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-page-types" hidden></ul>
-                  </li>
-
-                  <!-- Whitelabel -->
-                  <li class="side-nav__item">
-                     <a class="side-nav__link side-nav__link--level1" href="/foundations/index.html">White labelling</a>
-                  </li>
-               </ul>
-            </div>
-         </nav>
-
-         <!-- Main content stays constrained in a container -->
-         <section class="layout__main" aria-label="Main content">
-            <!-- Page banner / hero -->
-            <header class="banner">
-               <div class="container container--content">
-                  <!-- Breadcrumb -->
-                  <nav class="breadcrumb" aria-label="Breadcrumb">
-                     <ol class="breadcrumb__list">
-                        <li class="breadcrumb__item">
-                           <a href="./" class="breadcrumb__link breadcrumb__link--home">
-                              <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
-                              <span class="visually-hidden">Gen 2 System</span>
-                           </a>
-                        </li>
-
-                        <li class="breadcrumb__item">
-                           <a href="/foundations/" class="breadcrumb__link">
-                              Foundations
-                           </a>
-                        </li>
-
-                        <li class="breadcrumb__item" aria-current="page">Colour</li>
-                     </ol>
-                  </nav>
-
-                  <h1>Colour</h1>
-                  <p class="banner__description">
-                     This page defines the colour roles used across Gen 2 Media Sites
-                     and how those roles are expressed in different contexts.
-                  </p>
-               </div>
-            </header>
-
-            <!-- Main page content -->
+        <!-- Main content stays constrained in a container -->
+        <section class="layout__main" aria-label="Main content">
+          <!-- Page banner / hero -->
+          <header class="banner">
             <div class="container container--content">
-               <article class="content content--prose">
-                  <section>
-                     <h2>Overview</h2>
-                     <p>
-                        This page defines the colour roles used across Gen 2 Media
-                        Sites and how those roles are expressed in different contexts.
-                     </p>
+              <!-- Breadcrumb -->
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb__list">
+                  <li class="breadcrumb__item">
+                    <a
+                      href="./"
+                      class="breadcrumb__link breadcrumb__link--home"
+                    >
+                      <i
+                        class="fa-solid fa-house-chimney"
+                        aria-hidden="true"
+                      ></i>
+                      <span class="visually-hidden">Gen 2 System</span>
+                    </a>
+                  </li>
 
-                     <p>Gen 2 deliberately separates:</p>
+                  <li class="breadcrumb__item">
+                    <a href="/foundations/" class="breadcrumb__link">
+                      Foundations
+                    </a>
+                  </li>
 
-                     <ul class="list--standard">
-                        <li><strong>Roles</strong> – what a colour is for</li>
-                        <li><strong>Contexts</strong> – where that colour appears</li>
-                     </ul>
+                  <li class="breadcrumb__item" aria-current="page">Colour</li>
+                </ol>
+              </nav>
 
-                     <p>
-                        This separation allows the system to remain consistent while
-                        adapting to different visual environments, such as banners or
-                        media headers.
-                     </p>
-
-                     <p>
-                        This page defines colour roles and contexts only.<br />
-                        How colours are mapped per Media Site is documented under
-                        <strong>Foundations → Themes</strong>.
-                     </p>
-                  </section>
-                  <hr />
-                  <section>
-                     <h2>Colour roles</h2>
-
-                     <p>Gen 2 uses three core colour roles:</p>
-
-                     <ul class="list--standard">
-                        <li><strong>Base</strong> – structure and text</li>
-                        <li><strong>Action</strong> – interaction and affordance</li>
-                        <li>
-                           <strong>Semantic</strong> – meaning and system feedback
-                        </li>
-                     </ul>
-
-                     <p>
-                        Roles define intent and behaviour.<br />
-                        Roles do not change between contexts.
-                     </p>
-                  </section>
-                  <hr />
-                  <section>
-                     <h2>Colour contexts</h2>
-
-                     <p>
-                        Colours are rendered within different contexts.<br />
-                        Contexts define the visual environment in which colours are
-                        applied and may influence how roles are visually expressed.
-                     </p>
-
-                     <p>Gen 2 supports two primary contexts:</p>
-
-                     <ul class="list--standard">
-                        <li>
-                           <strong>Standard context</strong> – typical page surfaces
-                        </li>
-                        <li>
-                           <strong>Emphasis context</strong> – highlighted surfaces
-                           such as banners or media headers
-                        </li>
-                     </ul>
-
-                     <p>
-                        Contexts may adjust appearance to maintain contrast and
-                        clarity, but do not introduce new roles or meanings.
-                     </p>
-                     <figure class="content__figure">
-                        <img src="/assets/images/standard-emphasis-comparison copy.webp"
-                           alt="Diagram showing a standard page section and an emphasis section, labelled Standard context and Emphasis context."
-                           loading="lazy" width="1600" height="900" />
-                        <figcaption>
-                           Standard context is used for typical page surfaces. Emphasis
-                           context is used for highlighted surfaces such as banners or
-                           media headers.
-                        </figcaption>
-                     </figure>
-
-                  </section>
-                  <hr />
-                  <section>
-                     <h2>Base role</h2>
-                     <div class="grid grid--cols grid--2">
-
-                        <div class="content__col">
-                           <h3>Purpose</h3>
-                           <p>
-                              The Base role defines the structural foundation of the
-                              interface.
-                              Base colours prioritise legibility, hierarchy and stability
-                              and make up the majority of the UI.
-                           </p>
-                           <h3>Used for</h3>
-                           <ul class="list--standard">
-                              <li>Page backgrounds</li>
-                              <li>Content surfaces (cards, panels)</li>
-                              <li>Headers and footers</li>
-                              <li>Borders and dividers</li>
-                              <li>Primary, secondary and muted text</li>
-                           </ul>
-                        </div>
-                        <figure class="content__figure">
-                           <img src="/assets/images/base-roles.webp"
-                              alt="Diagram of base UI surfaces and text hierarchy." loading="lazy" width="1600"
-                              height="900" />
-                           <figcaption>
-                              Base is structural: neutral background, layered surfaces, dividers, and text hierarchy
-                              (muted to heading).
-                           </figcaption>
-                        </figure>
-
-                     </div>
-                     <hr />
-                     <div class="grid grid--cols grid--2">
-
-                        <div class="content__col">
-                           <h3>Base in different contexts</h3>
-
-                           <h4>Base (standard context)</h4>
-
-                           <ul class="list--standard">
-                              <li>Used for typical page surfaces</li>
-                              <li>Provides neutral contrast for content and actions</li>
-                              <li>Remains visually unobtrusive</li>
-                           </ul>
-
-                           <h4>Base (emphasis context)</h4>
-
-                           <ul class="list--standard">
-                              <li>
-                                 Used for highlighted surfaces such as banners and media
-                                 headers
-                              </li>
-                              <li>Visually distinct from standard surfaces</li>
-                              <li>Does not convey interaction or meaning</li>
-                           </ul>
-
-                           <p>Base remains non-interactive in all contexts.</p>
-
-                        </div>
-                        <figure class="content__figure">
-                           <img src="/assets/images/emphasis-base-roles.webp"
-                              alt="Diagram of emphasis base UI surfaces and text hierarchy." loading="lazy" width="1600"
-                              height="900" />
-                           <figcaption>
-                              Base is structural: neutral background, layered surfaces, dividers, and text hierarchy
-                              (muted to heading).
-                           </figcaption>
-                        </figure>
-                     </div>
-
-                     <hr />
-
-                     <h3>Base naming</h3>
-
-                     <p>Base colours are named by luminance, not hue.</p>
-
-                     <ul class="list--standard">
-                        <li>Lower numbers represent lighter colours</li>
-                        <li>Higher numbers represent darker colours</li>
-                        <li>
-                           Only Base steps intended for direct use are documented
-                        </li>
-                     </ul>
-                     <hr />
-                     <h3>Base colour roles</h3>
-
-                     <p>
-                        Base colours are documented only where they represent a
-                        deliberate design decision.
-                     </p>
-
-                     <table class="table">
-                        <thead>
-                           <tr>
-                              <th scope="col">Base step</th>
-                              <th scope="col">Intended use</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <tr>
-                              <th scope="row">Base 00</th>
-                              <td>Page background</td>
-                           </tr>
-                           <tr>
-                              <th scope="row">Base 01</th>
-                              <td>Primary surface (content areas, cards)</td>
-                           </tr>
-                           <tr>
-                              <th scope="row">Base 02</th>
-                              <td>
-                                 Elevated surface (modals, overlays, raised sections)
-                              </td>
-                           </tr>
-                           <tr>
-                              <th scope="row">Base 03</th>
-                              <td>Border and divider colour</td>
-                           </tr>
-                           <tr>
-                              <th scope="row">Base 60</th>
-                              <td>Muted or secondary text</td>
-                           </tr>
-                           <tr>
-                              <th scope="row">Base 80</th>
-                              <td>Primary body text</td>
-                           </tr>
-                           <tr>
-                              <th scope="row">Base 90</th>
-                              <td>
-                                 High-emphasis text (for example headings on light
-                                 surfaces)
-                              </td>
-                           </tr>
-                        </tbody>
-                     </table>
-
-                     <p>
-                        Additional internal Base steps may exist for refinement but
-                        are not intended for direct use unless explicitly documented.
-                     </p>
-                  </section>
-                  <hr />
-                  <section>
-                     <h2>Action role</h2>
-
-                     <div class="grid grid--cols grid--2">
-
-                        <div class="content__col">
-
-                           <h3>Purpose</h3>
-
-                           <p>The Action role defines interaction and affordance.</p>
-                           <p>
-                              Actions answer the question:<br />
-                              <q>What can I interact with?</q>
-                           </p>
-
-                           <h3>Used for</h3>
-
-                           <ul class="list--standard">
-                              <li>Buttons</li>
-                              <li>Links</li>
-                              <li>Icon actions (for example favourite, add to list)</li>
-                              <li>Focus indicators</li>
-                              <li>Active and selected states</li>
-                           </ul>
-                        </div>
-                        <figure class="content__figure">
-                           <img src="/assets/images/action-colours.webp"
-                              alt="Diagram showing a neutral page surface with interactive elements highlighted using the Action role, including a button, text link, icon action, focus indicator, and a selected toggle option."
-                              loading="lazy" width="1600" height="900" />
-                           <figcaption>
-                              Action colours indicate interactive elements and persistent selections, such as actions,
-                              links, icons, focus indicators, and selected states.
-                           </figcaption>
-                        </figure>
-                     </div>
-
-                     <hr />
-                     <div class="grid grid--cols grid--2">
-
-                        <div class="content__col">
-
-                           <h3>Action in different contexts</h3>
-
-                           <h4>Action (standard context)</h4>
-
-                           <ul class="list--standard">
-                              <li>Used on typical page surfaces</li>
-                              <li>Clear visual affordance</li>
-                              <li>Supports primary and secondary interaction patterns</li>
-                           </ul>
-
-                           <h4>Action (emphasis context)</h4>
-
-                           <ul class="list--standard">
-                              <li>
-                                 Used within emphasis regions such as banners or media
-                                 headers
-                              </li>
-                              <li>
-                                 Retains the same role and meaning as standard context
-                                 actions
-                              </li>
-                              <li>
-                                 May use a contrast-adjusted visual treatment to remain clear
-                                 against the emphasis surface
-                              </li>
-                           </ul>
-
-                           <p>
-                              Adjustments may include changes to fill, outline, elevation,
-                              shape or text colour.
-                           </p>
-
-                           <p>Context may change appearance, not semantics.</p>
-                        </div>
-                        <figure class="content__figure">
-                           <img src="/assets/images/action-colours-emphasis.webp"
-                              alt="Diagram showing a neutral page surface with interactive elements highlighted using the Action role, including a button, text link, icon action, focus indicator, and a selected toggle option."
-                              loading="lazy" width="1600" height="900" />
-                           <figcaption>
-                              Action colours indicate interactive elements and persistent selections, such as actions,
-                              links, icons, focus indicators, and selected states.
-                           </figcaption>
-                        </figure>
-                     </div>
-                  </section>
-                  <hr />
-                  <section>
-
-                     <div class="grid grid--cols grid--2">
-
-                        <div class="content__col">
-                           <h2>Semantic role</h2>
-
-                           <h3>Purpose</h3>
-
-                           <p>The Semantic role conveys meaning and system feedback.</p>
-
-                           <h3>Used for</h3>
-
-                           <ul class="list--standard">
-                              <li>Success</li>
-                              <li>Warning</li>
-                              <li>Error</li>
-                              <li>Info</li>
-                           </ul>
-                        </div>
-                        <figure class="content__figure">
-                           <img src="/assets/images/semantics.webp"
-                              alt="Diagram showing system feedback messages for success, warning, error, and information, each using semantic colour alongside icons and text labels to convey meaning."
-                              loading="lazy" width="1600" height="900" />
-                           <figcaption>
-                              Semantic colours communicate system feedback such as success, warning, error, and
-                              information, supported by icons and text to ensure meaning is clear and accessible.
-                           </figcaption>
-                        </figure>
-                     </div>
-                     <hr />
-                     <h3>Semantic across contexts</h3>
-
-                     <p>
-                        Semantic colours maintain consistent meaning across both
-                        standard and emphasis contexts.
-                     </p>
-
-                     <p>They must:</p>
-
-                     <ul class="list--standard">
-                        <li>Remain recognisable</li>
-                        <li>Maintain sufficient contrast</li>
-                        <li>Never rely on colour alone to convey meaning</li>
-                     </ul>
-
-                     <p>Semantic colours are not themed.</p>
-
-                  </section>
-                  <hr />
-                  <section>
-                     <h2>Accessibility and contrast</h2>
-
-                     <p>
-                        All colour usage must support accessibility and readability.
-                     </p>
-
-                     <p>General guidance:</p>
-
-                     <ul class="list--standard">
-                        <li>
-                           Text must maintain sufficient contrast against its surface
-                        </li>
-                        <li>
-                           Actions must remain clearly distinguishable in all contexts
-                        </li>
-                        <li>
-                           Emphasis surfaces must not reduce the clarity of content or
-                           interaction
-                        </li>
-                        <li>
-                           Where possible, rely on Base text colours for long-form
-                           content
-                        </li>
-                     </ul>
-                  </section>
-                  <hr />
-                  <section>
-                     <h2>Summary</h2>
-
-                     <ul class="list--standard">
-                        <li>Roles define intent</li>
-                        <li>Contexts define environment</li>
-                        <li>Appearance may adapt, meaning does not</li>
-                     </ul>
-
-                     <p>
-                        If a colour cannot be described by both a role and a context,
-                        it does not belong in the system.
-                     </p>
-                  </section>
-               </article>
+              <h1>Colour</h1>
+              <p class="banner__description">
+                This page defines the colour roles used across Gen 2 Media Sites
+                and how those roles are expressed in different contexts.
+              </p>
             </div>
+          </header>
 
-            <footer class="system-footer container container--content" role="contentinfo">
-               <div class="system-footer__inner">
-                  <p class="system-footer__copyright footer__copyright">
-                     © <span class="current-year">2026</span> Cadmore Media
-                  </p>
+          <!-- Main page content -->
+          <div class="container container--content">
+            <article class="content content--prose">
+              <!-- 1) Intro / Overview -->
+              <section>
+                <h2>Overview</h2>
 
-                  <nav class="system-footer__nav" aria-label="Footer links">
-                     <a href="https://cadmore.media/privacy-policy" class="system-footer__link" target="_blank"
-                        rel="noopener noreferrer">
-                        Privacy policy
-                     </a>
-                  </nav>
+                <p>
+                  Colour defines how hierarchy, meaning and emphasis are
+                  communicated across Gen 2 Media Sites.
+                </p>
 
-                  <p class="system-footer__powered">
-                     <a href="https://www.cadmore.media" class="system-footer__powered-link" target="_blank"
-                        rel="noopener noreferrer">
-                        <span class="system-footer__powered-label">Powered by</span>
-                        <img src="assets/images/c-logomark.svg" alt="" class="system-footer__powered-icon"
-                           aria-hidden="true" />
-                        <span class="system-footer__powered-text">
-                           Cadmore Media
-                        </span>
-                     </a>
-                  </p>
-               </div>
-            </footer>
-         </section>
+                <p>
+                  The colour system prioritises clarity, consistency and
+                  accessibility to support content-heavy and media-rich
+                  experiences.
+                </p>
+
+                <ul class="list--standard">
+                  <li>
+                    <strong>Contexts</strong> – where colour appears and the
+                    visual environment it operates within
+                  </li>
+                  <li>
+                    <strong>Roles</strong> – what a colour is for, independent
+                    of palette or brand
+                  </li>
+                </ul>
+
+                <p>
+                  This separation allows colour to adapt to different visual
+                  environments without changing intent, hierarchy or meaning.
+                </p>
+
+                <p>
+                  Client branding and site-specific adjustments are documented
+                  under <a href="white-labelling">White labelling</a>.
+                </p>
+              </section>
+
+              <hr />
+
+              <!-- 2) Visual explainer section (Contexts) -->
+              <section>
+                <h2>Colour contexts</h2>
+
+                <p>
+                  Contexts describe where colour appears and the visual
+                  environment it operates within. Standard is the default
+                  reading environment. Emphasis is used where additional
+                  prominence is required. In both, role meaning and hierarchy
+                  remain unchanged.
+                </p>
+
+                <figure class="content__figure">
+                  <img
+                    src="/assets/images/standard-emphasis-comparison copy.webp"
+                    alt="Two UI surface examples comparing standard and emphasis contexts, showing the same hierarchy with adjusted contrast for different background surfaces."
+                    loading="lazy"
+                    width="1600"
+                    height="900"
+                  />
+                  <figcaption>
+                    Standard and emphasis contexts change the surface
+                    environment, not the meaning of colour roles.
+                  </figcaption>
+                </figure>
+              </section>
+
+              <hr />
+
+              <!-- 3) Reusable “role” block pattern -->
+              <section>
+                <h2>Colour roles</h2>
+
+                <!-- Base role (2-column, with standard vs emphasis images) -->
+                <h3>Base colours</h3>
+
+                <div class="grid grid--cols grid--2">
+                  <div class="content__col">
+                    <h3>Purpose</h3>
+                    <p>
+                      Base colours provide the structural foundation of the
+                      interface. They dominate the UI and establish hierarchy,
+                      legibility and stability.
+                    </p>
+
+                    <h3>Used for</h3>
+                    <ul class="list--standard">
+                      <li>Page backgrounds</li>
+                      <li>Content surfaces (cards, panels)</li>
+                      <li>Borders and dividers</li>
+                      <li>Primary and secondary text</li>
+                    </ul>
+                  </div>
+
+                  <figure class="content__figure">
+                    <img
+                      src="/assets/images/base-roles.webp"
+                      alt="Standard context example showing base colours used for page background, content surface, dividers and text hierarchy."
+                      loading="lazy"
+                      width="1600"
+                      height="900"
+                    />
+                    <figcaption>
+                      Base colours in the standard context establish a stable,
+                      readable default environment.
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <hr />
+
+                <div class="grid grid--cols grid--2">
+                  <div class="content__col">
+                    <h3>Base colours in different contexts</h3>
+
+                    <h4>Standard context</h4>
+                    <ul class="list--standard">
+                      <li>Prioritises stability and low visual noise</li>
+                      <li>Defines the default reading environment</li>
+                      <li>Supports long-form content and dense layouts</li>
+                    </ul>
+
+                    <h4>Emphasis context</h4>
+                    <ul class="list--standard">
+                      <li>Uses a more prominent surface environment</li>
+                      <li>Contrast may increase to preserve readability</li>
+                      <li>Hierarchy and meaning remain unchanged</li>
+                    </ul>
+
+                    <p>
+                      What can change: surface tone and contrast. What cannot:
+                      hierarchy, intent and role meaning.
+                    </p>
+                  </div>
+
+                  <figure class="content__figure">
+                    <img
+                      src="/assets/images/emphasis-base-roles.webp"
+                      alt="Emphasis context example showing base colours on a more prominent surface with adjusted contrast while keeping the same text hierarchy."
+                      loading="lazy"
+                      width="1600"
+                      height="900"
+                    />
+                    <figcaption>
+                      Base colours in the emphasis context adjust contrast for
+                      the surface while preserving hierarchy.
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <hr />
+
+                <!-- Action role (2-column, with standard vs emphasis images) -->
+                <h3>Action colours</h3>
+
+                <div class="grid grid--cols grid--2">
+                  <div class="content__col">
+                    <h3>Purpose</h3>
+                    <p>
+                      Action colours communicate interactivity and affordance.
+                      They should clearly signal available actions without
+                      overwhelming surrounding content.
+                    </p>
+
+                    <h3>Used for</h3>
+                    <ul class="list--standard">
+                      <li>Buttons and button states</li>
+                      <li>Text links</li>
+                      <li>Interactive controls and focus indicators</li>
+                      <li>
+                        Hover and active feedback for interactive elements
+                      </li>
+                    </ul>
+                  </div>
+
+                  <figure class="content__figure">
+                    <img
+                      src="/assets/images/action-colours.webp"
+                      alt="Standard context example showing action colours applied to links and buttons on default base surfaces."
+                      loading="lazy"
+                      width="1600"
+                      height="900"
+                    />
+                    <figcaption>
+                      Action colours in the standard context clearly indicate
+                      interactive elements within the reading environment.
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <hr />
+
+                <div class="grid grid--cols grid--2">
+                  <div class="content__col">
+                    <h3>Action colours in different contexts</h3>
+
+                    <h4>Standard context</h4>
+                    <ul class="list--standard">
+                      <li>Affordance is clear without dominating content</li>
+                      <li>Links remain distinct from body text</li>
+                      <li>Interactive states remain predictable</li>
+                    </ul>
+
+                    <h4>Emphasis context</h4>
+                    <ul class="list--standard">
+                      <li>Contrast may increase against prominent surfaces</li>
+                      <li>Interactive elements remain identifiable</li>
+                      <li>Action meaning remains unchanged</li>
+                    </ul>
+
+                    <p>
+                      What can change: contrast and tone to suit the surface.
+                      What cannot: affordance and hierarchy.
+                    </p>
+                  </div>
+
+                  <figure class="content__figure">
+                    <img
+                      src="/assets/images/action-colours-emphasis.webp"
+                      alt="Emphasis context example showing action colours adjusted for a prominent surface while keeping buttons and links clearly identifiable."
+                      loading="lazy"
+                      width="1600"
+                      height="900"
+                    />
+                    <figcaption>
+                      Action colours in the emphasis context preserve affordance
+                      by adjusting contrast for the surface.
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <hr />
+
+                <!-- Semantic role (2-column) -->
+                <h3>Semantic colours</h3>
+
+                <div class="grid grid--cols grid--2">
+                  <div class="content__col">
+                    <h3>Purpose</h3>
+                    <p>
+                      Semantic colours communicate system meaning and status,
+                      such as success, warning, error and informational states.
+                      They convey outcomes and feedback rather than interaction
+                      or structure.
+                    </p>
+
+                    <h3>Used for</h3>
+                    <ul class="list--standard">
+                      <li>Success, warning, error and information messages</li>
+                      <li>Status indicators and alerts</li>
+                      <li>Validation feedback and system responses</li>
+                    </ul>
+
+                    <p>
+                      Semantic meaning must remain consistent across the system
+                      and should never rely on colour alone. Text, icons and
+                      structure must reinforce meaning.
+                    </p>
+                  </div>
+
+                  <figure class="content__figure">
+                    <img
+                      src="/assets/images/semantics.webp"
+                      alt="Examples of semantic message states for success, warning, error and information, each reinforced with an icon and text label to avoid relying on colour alone."
+                      loading="lazy"
+                      width="1600"
+                      height="900"
+                    />
+                    <figcaption>
+                      Semantic colours communicate system meaning and must be
+                      reinforced with text and icons, not colour alone.
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <hr />
+
+
+                <!-- Naming / rules -->
+                <h3>Rules</h3>
+                <p>
+                  Colour meaning must remain consistent across contexts, and
+                  themes may adapt values without changing role intent.
+                </p>
+
+                <ul class="list--standard">
+                  <li>
+                    Roles define what colour means. Contexts define where it
+                    appears.
+                  </li>
+                  <li>
+                    Roles do not change between standard and emphasis contexts.
+                    Only contrast may adjust.
+                  </li>
+                  <li>
+                    Do not rely on colour alone to communicate meaning. Use
+                    text, icons or structure as reinforcement.
+                  </li>
+                </ul>
+
+                <hr />
+
+                <!-- Reference table -->
+                <h3>Role reference</h3>
+
+                <p>
+                  Colour roles describe purpose across the interface. Values and
+                  palette mappings are theme-specific.
+                </p>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Role</th>
+                      <th scope="col">What it communicates</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Base</th>
+                      <td>
+                        Structure, hierarchy and stable surfaces for reading and
+                        layout
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Action</th>
+                      <td>
+                        Interactivity and affordance for controls, links and
+                        focus states
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Semantic</th>
+                      <td>
+                        Status and meaning such as success, warning, error and
+                        information
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <p>
+                  Themes may adjust values and brand expression, but role
+                  meaning and hierarchy must remain consistent.
+                </p>
+              </section>
+
+              <hr />
+
+              <!-- 4) Guidance section -->
+              <section>
+                <h2>Accessibility and usage</h2>
+
+                <p>Colour must support inclusive use across all contexts.</p>
+
+                <ul class="list--standard">
+                  <li>
+                    Maintain sufficient contrast for text and interactive
+                    elements.
+                  </li>
+                  <li>
+                    Reinforce semantic meaning with text, icons or structure
+                    rather than colour alone.
+                  </li>
+                  <li>
+                    Keep colour usage predictable to support recognition and
+                    comprehension.
+                  </li>
+                </ul>
+              </section>
+
+              <hr />
+
+              <!-- 5) Summary / recap -->
+              <section>
+                <h2>Summary</h2>
+
+                <ul class="list--standard">
+                  <li>
+                    Gen 2 colour separates context from role to maintain
+                    consistent meaning.
+                  </li>
+                  <li>
+                    Roles define what colour means. Contexts define where it
+                    appears.
+                  </li>
+                  <li>
+                    Themes may adapt values, but not semantic meaning or
+                    hierarchy.
+                  </li>
+                </ul>
+
+                <p class="content--prose__emphasis">
+                    Gen 2 colour uses defined roles and contexts to communicate
+                    hierarchy, interaction and semantic meaning consistently
+                    across the interface.
+                </p>
+              </section>
+            </article>
+          </div>
+
+          <footer
+            class="system-footer container container--content"
+            role="contentinfo"
+          >
+            <div class="system-footer__inner">
+              <p class="system-footer__copyright footer__copyright">
+                © <span class="current-year">2026</span> Cadmore Media
+              </p>
+
+              <nav class="system-footer__nav" aria-label="Footer links">
+                <a
+                  href="https://cadmore.media/privacy-policy"
+                  class="system-footer__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy policy
+                </a>
+              </nav>
+
+              <p class="system-footer__powered">
+                <a
+                  href="https://www.cadmore.media"
+                  class="system-footer__powered-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="system-footer__powered-label">Powered by</span>
+                  <img
+                    src="assets/images/c-logomark.svg"
+                    alt=""
+                    class="system-footer__powered-icon"
+                    aria-hidden="true"
+                  />
+                  <span class="system-footer__powered-text">
+                    Cadmore Media
+                  </span>
+                </a>
+              </p>
+            </div>
+          </footer>
+        </section>
       </div>
-   </main>
-   <script src="assets/js/00-core.js"></script>
-   <script src="assets/js/05-jquery.min.js"></script>
-   <script src="assets/js/30-component.side-nav.js"></script>
-   <script src="assets/js/90-system.navigation.js"></script>
-</body>
-
+    </main>
+    <script src="assets/js/00-core.js"></script>
+    <script src="assets/js/05-jquery.min.js"></script>
+    <script src="assets/js/30-component.side-nav.js"></script>
+    <script src="assets/js/90-system.navigation.js"></script>
+  </body>
 </html>

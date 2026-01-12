@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gen 2 System</title>
+    <script>
+      (function () {
+        var REPO = "system";
+        // If hosted at https://username.github.io/REPO/... then use /REPO/
+        // Otherwise (local dev, custom domain, etc.) use /
+        var isProjectPages = location.hostname.endsWith("github.io");
+        var baseHref = isProjectPages ? "/" + REPO + "/" : "/";
+
+        var base = document.createElement("base");
+        base.href = baseHref;
+        document.head.appendChild(base);
+      })();
+    </script>
+    <!-- Now all relative URLs resolve correctly in BOTH environments -->
+    <link rel="stylesheet" href="assets/css/00-reset.css" />
+    <link rel="stylesheet" href="assets/css/10-tokens.css" />
+    <link rel="stylesheet" href="assets/css/00-core.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
+    <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
+    <link
+      rel="icon"
+      type="assets/images/png"
+      href="/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="system-header" role="banner">
+      <!-- Shared header -->
+    </header>
+
+    <main id="main" class="main" role="main">
+      <div class="layout--sidebar-edge">
+        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+        <div class="side-nav-responsive__rail" data-side-nav-rail>
+          <button
+            type="button"
+            class="side-nav-responsive__trigger"
+            data-side-nav-trigger
+            aria-controls="side-nav-drawer"
+            aria-expanded="false"
+            aria-label="Open navigation"
+          >
+            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile: backdrop for drawer -->
+        <div
+          class="side-nav-responsive__backdrop"
+          data-side-nav-backdrop
+          hidden
+        ></div>
+
+        <!-- Edge-aligned side navigation (flush left, outside container) -->
+        <nav
+          class="layout__sidebar layout__sidebar--edge"
+          aria-label="Section navigation"
+          id="side-nav-drawer"
+          data-side-nav-drawer
+        >
+          <!-- Brand (desktop) -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav" data-side-nav>
+            <!-- Mobile-only close  -->
+            <button
+              type="button"
+              class="side-nav__close"
+              data-side-nav-close
+              aria-label="Close navigation"
+            >
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <h2 id="Gen 2-system-nav" class="visually-hidden">
+              Gen 2 System Navigation
+            </h2>
+
+            <ul class="side-nav__list" role="list" id="nav-foundations">
+              <!-- Foundations -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-foundations"
+                >
+                  <span class="side-nav__label">Foundations</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-foundations"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Components -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-components"
+                >
+                  <span class="side-nav__label">Components</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-components"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Patterns -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-patterns"
+                >
+                  <span class="side-nav__label">Patterns</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-patterns"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Page Types -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-page-types"
+                >
+                  <span class="side-nav__label">Page Types</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-page-types"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Whitelabel -->
+              <li class="side-nav__item">
+                <a
+                  class="side-nav__link side-nav__link--level1"
+                  href="/foundations/index.html"
+                  >White labelling</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main content stays constrained in a container -->
+        <section class="layout__main" aria-label="Main content">
+          <!-- Page banner / hero -->
+          <header class="banner">
+            <div class="container container--content">
+              <!-- Breadcrumb -->
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb__list">
+                  <li class="breadcrumb__item">
+                    <a
+                      href="./"
+                      class="breadcrumb__link breadcrumb__link--home"
+                    >
+                      <i
+                        class="fa-solid fa-house-chimney"
+                        aria-hidden="true"
+                      ></i>
+                      <span class="visually-hidden">Gen 2 System</span>
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item">
+                    <a href="/foundations/" class="breadcrumb__link">
+                      Section
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item" aria-current="page">Page</li>
+                </ol>
+              </nav>
+
+              <h1>Button</h1>
+              <p class="banner__description">
+                Buttons are used to trigger user actions within the interface.
+              </p>
+            </div>
+          </header>
+
+          <!-- Main page content -->
+          <div class="container container--content">
+            <article class="content content--prose">
+              <!-- H1 + defining sentence sit above this article in your shell -->
+
+              <!-- Overview -->
+              <section>
+                <div class="grid grid--cols grid--2">
+                  <div>
+                    <h2>Overview</h2>
+
+                    <p>
+                      Buttons represent explicit actions a user can take. They
+                      are interactive, intentional and result in an immediate
+                      outcome, such as submitting a form, saving changes or
+                      progressing a task.
+                    </p>
+
+                    <p>
+                      Buttons should be used sparingly and deliberately. Overuse
+                      reduces their effectiveness and makes it harder for users
+                      to identify primary actions.
+                    </p>
+                  </div>
+
+                  <figure class="content__figure">
+                    <img
+                      src="https://placehold.co/1200x650"
+                      alt="Placeholder image"
+                      loading="lazy"
+                    />
+                    <figcaption>
+                      Example of primary and secondary buttons in a form
+                      context.
+                    </figcaption>
+                  </figure>
+                </div>
+              </section>
+              <hr />
+
+              <!-- When to use -->
+              <section>
+                <h2>When to use</h2>
+
+                <p>
+                  Use buttons when the user is expected to perform an action.
+                </p>
+
+                <ul class="list--standard">
+                  <li>Submitting or confirming an action</li>
+                  <li>Saving or applying changes</li>
+                  <li>Progressing through a workflow</li>
+                  <li>Triggering an interface update or system behaviour</li>
+                </ul>
+              </section>
+              <hr />
+
+              <section>
+                <h2>When not to use</h2>
+
+                <p>Do not use buttons for navigation or passive interaction.</p>
+
+                <ul class="list--standard">
+                  <li>Navigating between pages or views (use links)</li>
+                  <li>Inline text actions within body content</li>
+                  <li>Decorative emphasis</li>
+                  <li>Actions that do not result in a clear outcome</li>
+                </ul>
+              </section>
+              <hr />
+
+              <!-- Structure -->
+              <section>
+                <h2>Structure</h2>
+
+                <p>
+                  Buttons are built using semantic <code>button</code> elements.
+                </p>
+
+                <p>A button consists of:</p>
+
+                <ul class="list--standard">
+                  <li>A clickable button element</li>
+                  <li>A text label describing the action</li>
+                  <li>Optional supporting elements such as icons</li>
+                </ul>
+
+                <!-- <pre><code>&lt;button type="button"&gt;
+                    Button label
+                &lt;/button&gt;</code></pre> -->
+
+                <p>
+                  Buttons must always include visible text unless explicitly
+                  designed as icon-only buttons with an accessible label.
+                </p>
+              </section>
+              <hr />
+
+              <!-- States and behaviour -->
+              <section>
+                <h2>States and behaviour</h2>
+
+                <p>Buttons support a predictable set of states.</p>
+
+                <ul class="list--standard">
+                  <li>
+                    <strong>Default:</strong> The button is available for
+                    interaction
+                  </li>
+                  <li>
+                    <strong>Hover:</strong> Visual feedback on pointer
+                    interaction
+                  </li>
+                  <li>
+                    <strong>Focus:</strong> Clear indication of keyboard focus
+                  </li>
+                  <li><strong>Active:</strong> Feedback during activation</li>
+                  <li><strong>Disabled:</strong> The action is unavailable</li>
+                </ul>
+
+                <p>
+                  State changes should reinforce affordance and availability
+                  without altering the meaning of the action.
+                </p>
+
+                <figure class="content__figure">
+                  <img
+                    src="https://placehold.co/1200x650"
+                    alt="Placeholder image"
+                    loading="lazy"
+                  />
+                </figure>
+              </section>
+              <hr />
+
+              <!-- Variants -->
+              <section>
+                <h2>Variants</h2>
+
+                <p>
+                  Buttons support a limited set of variants to express
+                  hierarchy, emphasis and context.<br />
+                  Variants affect appearance and emphasis, not behaviour.
+                </p>
+                <hr />
+
+                <h3>Emphasis variants</h3>
+
+                <p>
+                  Emphasis variants communicate the relative importance of an
+                  action.
+                </p>
+
+                <h4>Primary button</h4>
+
+                <p>
+                  Used for the main or most important action on a page or within
+                  a section.
+                </p>
+
+                <pre><code>&lt;button class="btn btn--primary" type="button"&gt;
+  Primary action
+&lt;/button&gt;</code></pre>
+
+                <p>Most screens should contain only one primary action.</p>
+
+                <h4>Secondary button</h4>
+
+                <p>
+                  Used for supporting actions that are less prominent than the
+                  primary action.
+                </p>
+
+                <pre><code>&lt;button class="btn btn--secondary" type="button"&gt;
+  Secondary action
+&lt;/button&gt;</code></pre>
+
+                <p>
+                  Secondary buttons should not visually compete with the primary
+                  action.
+                </p>
+
+                <h4>Ghost (low-emphasis) button</h4>
+
+                <p>
+                  Used for tertiary or low-priority actions where minimal visual
+                  emphasis is required.
+                </p>
+
+                <pre><code>&lt;button class="btn btn--ghost" type="button"&gt;
+  Tertiary action
+&lt;/button&gt;</code></pre>
+
+                <p>
+                  Ghost buttons must remain clearly identifiable as interactive.
+                </p>
+
+                <figure class="content__figure">
+                  <img
+                    src="https://placehold.co/1200x650"
+                    alt="Placeholder image"
+                    loading="lazy"
+                  />
+                </figure>
+                <hr />
+
+                <h3>Size variants</h3>
+
+                <p>
+                  Size variants support different content densities and
+                  interaction contexts.<br />
+                  Size affects padding and text size only, not importance.
+                </p>
+
+                <h4>Large</h4>
+
+                <p>
+                  Used where actions require greater emphasis or touch comfort.
+                </p>
+
+                <pre><code>&lt;button class="btn btn--primary btn--lg" type="button"&gt;
+  Large button
+&lt;/button&gt;</code></pre>
+
+                <h4>Medium (default)</h4>
+
+                <p>Used in most interface contexts.</p>
+
+                <pre><code>&lt;button class="btn btn--primary" type="button"&gt;
+  Medium button
+&lt;/button&gt;</code></pre>
+
+                <h4>Small</h4>
+
+                <p>Used in dense interfaces or constrained spaces.</p>
+
+                <pre><code>&lt;button class="btn btn--primary btn--sm" type="button"&gt;
+  Small button
+&lt;/button&gt;</code></pre>
+
+                <p>
+                  Small buttons should not be used for primary page-level
+                  actions.
+                </p>
+
+                <figure class="content__figure">
+                  <img
+                    src="https://placehold.co/1200x650"
+                    alt="Placeholder image"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <hr />
+
+                <h3>Icon buttons</h3>
+
+                <p>
+                  Icon buttons are used where space is limited or when the
+                  action is universally recognisable.
+                </p>
+
+                <h4>Icon with visible label</h4>
+
+                <pre><code>&lt;button class="btn btn--secondary btn--icon" type="button"&gt;
+  &lt;i class="fa-solid fa-download" aria-hidden="true"&gt;&lt;/i&gt;
+  &lt;span&gt;Download&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+
+                <p>Icons should support the label, not replace it.</p>
+
+                <h4>Icon-only button (hidden label)</h4>
+
+                <p>Icon-only buttons must provide an accessible name.</p>
+
+                <pre><code>&lt;button
+  class="btn btn--ghost btn--icon-only"
+  type="button"
+  aria-label="Close"
+&gt;
+  &lt;i class="fa-solid fa-xmark" aria-hidden="true"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+
+                <p>
+                  Icon-only buttons should be used sparingly and only where the
+                  meaning is clear without text.
+                </p>
+
+                <figure class="content__figure">
+                  <img
+                    src="https://placehold.co/1200x650"
+                    alt="Placeholder image"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <hr />
+
+                <h3>Disabled state</h3>
+
+                <p>
+                  Disabled buttons indicate unavailable actions and must not be
+                  interactive.
+                </p>
+
+                <pre><code>&lt;button class="btn btn--primary" type="button" disabled&gt;
+  Action unavailable
+&lt;/button&gt;</code></pre>
+
+                <p>
+                  Disabled buttons must not receive focus and should clearly
+                  appear inactive.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Accessibility -->
+              <section>
+                <h2>Accessibility</h2>
+
+                <p>
+                  Buttons must be operable using both pointer and keyboard
+                  input.
+                </p>
+
+                <ul class="list--standard">
+                  <li>Buttons must be focusable and operable via keyboard</li>
+                  <li>Focus indicators must be clearly visible</li>
+                  <li>Disabled buttons must not receive focus</li>
+                  <li>Labels must clearly describe the action</li>
+                </ul>
+
+                <p>
+                  Buttons must not rely on colour alone to communicate
+                  importance or state.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Content guidelines -->
+              <section>
+                <h2>Content guidelines</h2>
+
+                <p>Button labels should be concise and action-oriented.</p>
+
+                <ul class="list--standard">
+                  <li>Use clear verbs that describe the outcome</li>
+                  <li>Avoid vague labels such as “OK” or “Click here”</li>
+                  <li>Keep labels short and scannable</li>
+                </ul>
+
+                <p>
+                  Button text should describe what will happen when the button
+                  is activated.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Summary + anchor -->
+              <section>
+                <h2>Summary</h2>
+
+                <p>
+                  Buttons provide clear, predictable triggers for user
+                  actions.<br />
+                  They should be used intentionally to support interaction and
+                  decision-making.
+                </p>
+
+                <p class="content--prose__emphasis">
+                  Buttons clearly indicate available actions, express hierarchy
+                  through consistent variants, and provide predictable
+                  interaction feedback.
+                </p>
+              </section>
+            </article>
+          </div>
+
+          <footer
+            class="system-footer container container--content"
+            role="contentinfo"
+          >
+            <div class="system-footer__inner">
+              <p class="system-footer__copyright footer__copyright">
+                © <span class="current-year">2026</span> Cadmore Media
+              </p>
+
+              <nav class="system-footer__nav" aria-label="Footer links">
+                <a
+                  href="https://cadmore.media/privacy-policy"
+                  class="system-footer__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy policy
+                </a>
+              </nav>
+
+              <p class="system-footer__powered">
+                <a
+                  href="https://www.cadmore.media"
+                  class="system-footer__powered-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="system-footer__powered-label">Powered by</span>
+                  <img
+                    src="assets/images/c-logomark.svg"
+                    alt=""
+                    class="system-footer__powered-icon"
+                    aria-hidden="true"
+                  />
+                  <span class="system-footer__powered-text">
+                    Cadmore Media
+                  </span>
+                </a>
+              </p>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <script src="assets/js/00-core.js"></script>
+    <script src="assets/js/05-jquery.min.js"></script>
+    <script src="assets/js/30-component.side-nav.js"></script>
+    <script src="assets/js/90-system.navigation.js"></script>
+  </body>
+</html>

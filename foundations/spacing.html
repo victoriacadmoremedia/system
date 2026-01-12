@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gen 2 System</title>
+    <script>
+      (function () {
+        var REPO = "system";
+        // If hosted at https://username.github.io/REPO/... then use /REPO/
+        // Otherwise (local dev, custom domain, etc.) use /
+        var isProjectPages = location.hostname.endsWith("github.io");
+        var baseHref = isProjectPages ? "/" + REPO + "/" : "/";
+
+        var base = document.createElement("base");
+        base.href = baseHref;
+        document.head.appendChild(base);
+      })();
+    </script>
+    <!-- Now all relative URLs resolve correctly in BOTH environments -->
+    <link rel="stylesheet" href="assets/css/00-reset.css" />
+    <link rel="stylesheet" href="assets/css/10-tokens.css" />
+    <link rel="stylesheet" href="assets/css/00-core.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
+    <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
+    <link
+      rel="icon"
+      type="assets/images/png"
+      href="/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="system-header" role="banner">
+      <!-- Shared header -->
+    </header>
+
+    <main id="main" class="main" role="main">
+      <div class="layout--sidebar-edge">
+        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+        <div class="side-nav-responsive__rail" data-side-nav-rail>
+          <button
+            type="button"
+            class="side-nav-responsive__trigger"
+            data-side-nav-trigger
+            aria-controls="side-nav-drawer"
+            aria-expanded="false"
+            aria-label="Open navigation"
+          >
+            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile: backdrop for drawer -->
+        <div
+          class="side-nav-responsive__backdrop"
+          data-side-nav-backdrop
+          hidden
+        ></div>
+
+        <!-- Edge-aligned side navigation (flush left, outside container) -->
+        <nav
+          class="layout__sidebar layout__sidebar--edge"
+          aria-label="Section navigation"
+          id="side-nav-drawer"
+          data-side-nav-drawer
+        >
+          <!-- Brand (desktop) -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav" data-side-nav>
+            <!-- Mobile-only close  -->
+            <button
+              type="button"
+              class="side-nav__close"
+              data-side-nav-close
+              aria-label="Close navigation"
+            >
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <h2 id="Gen 2-system-nav" class="visually-hidden">
+              Gen 2 System Navigation
+            </h2>
+
+            <ul class="side-nav__list" role="list" id="nav-foundations">
+              <!-- Foundations -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-foundations"
+                >
+                  <span class="side-nav__label">Foundations</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-foundations"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Components -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-components"
+                >
+                  <span class="side-nav__label">Components</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-components"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Patterns -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-patterns"
+                >
+                  <span class="side-nav__label">Patterns</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-patterns"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Page Types -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-page-types"
+                >
+                  <span class="side-nav__label">Page Types</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-page-types"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Whitelabel -->
+              <li class="side-nav__item">
+                <a
+                  class="side-nav__link side-nav__link--level1"
+                  href="/foundations/index.html"
+                  >White labelling</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main content stays constrained in a container -->
+        <section class="layout__main" aria-label="Main content">
+          <!-- Page banner / hero -->
+          <header class="banner">
+            <div class="container container--content">
+              <!-- Breadcrumb -->
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb__list">
+                  <li class="breadcrumb__item">
+                    <a
+                      href="./"
+                      class="breadcrumb__link breadcrumb__link--home"
+                    >
+                      <i
+                        class="fa-solid fa-house-chimney"
+                        aria-hidden="true"
+                      ></i>
+                      <span class="visually-hidden">Gen 2 System</span>
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item">
+                    <a href="/foundations/" class="breadcrumb__link">
+                      Foundations
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item" aria-current="page">Spacing</li>
+                </ol>
+              </nav>
+
+              <h1>Spacing</h1>
+              <p>
+                Spacing defines how rhythm, proximity and separation are applied
+                across Gen 2 Media Sites.
+              </p>
+            </div>
+          </header>
+
+          <!-- Main page content -->
+          <div class="container container--content">
+            <article class="content content--prose">
+              <!-- Overview -->
+              <section>
+                <div class="grid grid--cols grid--2">
+                  <div>
+                    <h2>Overview</h2>
+
+                    <p>
+                      The spacing system establishes consistent visual rhythm
+                      and clear relationships between elements to support
+                      readability, scanning and comprehension.
+                    </p>
+
+                    <p>
+                      This page defines spacing principles and usage guidance.
+                    </p>
+
+                    <p>
+                      Any site-specific adjustments are
+                      documented under
+                      <a href="white-labelling">White labelling</a>.
+                    </p>
+                  </div>
+
+                  <figure class="content__figure">
+                    <img
+                      src="https://placehold.co/960x640?text=Spacing+rhythm+and+scale"
+                      alt="Illustration showing spacing rhythm with consistent gaps between grouped elements and larger separation between sections."
+                    />
+                    <figcaption>
+                      Spacing rhythm and scale relationships.
+                    </figcaption>
+                  </figure>
+                </div>
+              </section>
+              <hr />
+
+              <!-- Principles -->
+              <section>
+                <h2>Principles</h2>
+
+                <p>
+                  Gen 2 spacing is content-first and structural by default.<br />
+                  It exists to organise information clearly and support reading,
+                  scanning and interaction.
+                </p>
+
+                <p>
+                  Spacing reinforces hierarchy and grouping. Related elements
+                  should feel visually connected, while unrelated elements
+                  should be clearly separated.
+                </p>
+
+                <p>
+                  Spacing decisions are deliberate and predictable. Consistent
+                  use of spacing reduces visual noise and helps users understand
+                  structure without relying on additional styling.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Spacing and hierarchy -->
+              <section>
+                <h2>Spacing and hierarchy</h2>
+
+                <p>
+                  Spacing plays a key role in establishing hierarchy across the
+                  interface.
+                </p>
+
+                <p>
+                  Larger spacing values are used to separate major sections and
+                  regions, while smaller spacing values are used within
+                  components and content groups. This creates a clear visual
+                  rhythm that supports both scanning and focused reading.
+                </p>
+
+                <p>
+                  Spacing should work alongside typography and layout to
+                  communicate structure. It should not be used decoratively or
+                  arbitrarily.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Rhythm and consistency -->
+              <section>
+                <h2>Rhythm and consistency</h2>
+
+                <p>
+                  Gen 2 uses a defined spacing scale to maintain consistent
+                  rhythm across page types and content densities.
+                </p>
+
+                <p>
+                  Only documented spacing steps should be used. Ad-hoc margins
+                  or padding introduce inconsistency and undermine the system.
+                </p>
+
+                <p>
+                  Spacing remains consistent across similar roles and patterns,
+                  even when content density or visual context changes.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Proximity and grouping -->
+              <section>
+                <h2>Proximity and grouping</h2>
+
+                <p>Spacing communicates relationships between elements.</p>
+
+                <p>
+                  Elements that belong together should be visually grouped
+                  through proximity. Increased spacing should signal separation
+                  between distinct sections, components or content groups.
+                </p>
+
+                <p>
+                  Spacing should never be the sole indicator of meaning.
+                  Grouping and hierarchy must also be reinforced through
+                  structure, alignment and semantics.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Responsive behaviour -->
+              <section>
+                <h2>Responsive behaviour</h2>
+
+                <p>
+                  As layouts adapt across screen sizes, spacing may adjust to
+                  suit available space and reading comfort.
+                </p>
+
+                <p>
+                  While spacing values may scale or compress responsively, the
+                  relative relationships between elements must remain intact.
+                  Hierarchy and grouping should not change as spacing adapts.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Accessibility and readability -->
+              <section>
+                <h2>Accessibility and readability</h2>
+
+                <p>Spacing must support inclusive use.</p>
+
+                <p>
+                  Adequate spacing improves readability, touch targeting and
+                  focus clarity. Content must remain readable when zoomed or
+                  resized, and spacing should not cause content overlap or loss
+                  of information.
+                </p>
+
+                <p>
+                  Consistent spacing also supports cognitive accessibility by
+                  reducing visual clutter and improving predictability.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Summary -->
+              <section>
+                <h2>Summary</h2>
+
+                <p>
+                  Spacing in Gen 2 provides a consistent rhythm and clear visual
+                  structure for content and interaction.<br />
+                  It reinforces hierarchy and relationships without drawing
+                  attention to itself.
+                </p>
+                <!-- System anchor sentence -->
+
+                <p class="content--prose__emphasis">
+                  Gen 2 spacing uses consistent scales and predictable
+                  relationships to support rhythm, hierarchy and readability
+                  across all contexts.
+                </p>
+              </section>
+            </article>
+          </div>
+
+          <footer
+            class="system-footer container container--content"
+            role="contentinfo"
+          >
+            <div class="system-footer__inner">
+              <p class="system-footer__copyright footer__copyright">
+                © <span class="current-year">2026</span> Cadmore Media
+              </p>
+
+              <nav class="system-footer__nav" aria-label="Footer links">
+                <a
+                  href="https://cadmore.media/privacy-policy"
+                  class="system-footer__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy policy
+                </a>
+              </nav>
+
+              <p class="system-footer__powered">
+                <a
+                  href="https://www.cadmore.media"
+                  class="system-footer__powered-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="system-footer__powered-label">Powered by</span>
+                  <img
+                    src="assets/images/c-logomark.svg"
+                    alt=""
+                    class="system-footer__powered-icon"
+                    aria-hidden="true"
+                  />
+                  <span class="system-footer__powered-text">
+                    Cadmore Media
+                  </span>
+                </a>
+              </p>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <script src="assets/js/00-core.js"></script>
+    <script src="assets/js/05-jquery.min.js"></script>
+    <script src="assets/js/30-component.side-nav.js"></script>
+    <script src="assets/js/90-system.navigation.js"></script>
+  </body>
+</html>

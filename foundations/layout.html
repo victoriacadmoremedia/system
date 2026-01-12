@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gen 2 System</title>
+    <script>
+      (function () {
+        var REPO = "system";
+        // If hosted at https://username.github.io/REPO/... then use /REPO/
+        // Otherwise (local dev, custom domain, etc.) use /
+        var isProjectPages = location.hostname.endsWith("github.io");
+        var baseHref = isProjectPages ? "/" + REPO + "/" : "/";
+
+        var base = document.createElement("base");
+        base.href = baseHref;
+        document.head.appendChild(base);
+      })();
+    </script>
+    <!-- Now all relative URLs resolve correctly in BOTH environments -->
+    <link rel="stylesheet" href="assets/css/00-reset.css" />
+    <link rel="stylesheet" href="assets/css/10-tokens.css" />
+    <link rel="stylesheet" href="assets/css/00-core.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
+    <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
+    <link
+      rel="icon"
+      type="assets/images/png"
+      href="/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="system-header" role="banner">
+      <!-- Shared header -->
+    </header>
+
+    <main id="main" class="main" role="main">
+      <div class="layout--sidebar-edge">
+        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+        <div class="side-nav-responsive__rail" data-side-nav-rail>
+          <button
+            type="button"
+            class="side-nav-responsive__trigger"
+            data-side-nav-trigger
+            aria-controls="side-nav-drawer"
+            aria-expanded="false"
+            aria-label="Open navigation"
+          >
+            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile: backdrop for drawer -->
+        <div
+          class="side-nav-responsive__backdrop"
+          data-side-nav-backdrop
+          hidden
+        ></div>
+
+        <!-- Edge-aligned side navigation (flush left, outside container) -->
+        <nav
+          class="layout__sidebar layout__sidebar--edge"
+          aria-label="Section navigation"
+          id="side-nav-drawer"
+          data-side-nav-drawer
+        >
+          <!-- Brand (desktop) -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav" data-side-nav>
+            <!-- Mobile-only close  -->
+            <button
+              type="button"
+              class="side-nav__close"
+              data-side-nav-close
+              aria-label="Close navigation"
+            >
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </button>
+            <h2 id="Gen 2-system-nav" class="visually-hidden">
+              Gen 2 System Navigation
+            </h2>
+
+            <ul class="side-nav__list" role="list" id="nav-foundations">
+              <!-- Foundations -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-foundations"
+                >
+                  <span class="side-nav__label">Foundations</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-foundations"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Components -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-components"
+                >
+                  <span class="side-nav__label">Components</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-components"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Patterns -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-patterns"
+                >
+                  <span class="side-nav__label">Patterns</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-patterns"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Page Types -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-page-types"
+                >
+                  <span class="side-nav__label">Page Types</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-page-types"
+                  hidden
+                ></ul>
+              </li>
+
+              <!-- Whitelabel -->
+              <li class="side-nav__item">
+                <a
+                  class="side-nav__link side-nav__link--level1"
+                  href="/foundations/index.html"
+                  >White labelling</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Main content stays constrained in a container -->
+        <section class="layout__main" aria-label="Main content">
+          <!-- Page banner / hero -->
+          <header class="banner">
+            <div class="container container--content">
+              <!-- Breadcrumb -->
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb__list">
+                  <li class="breadcrumb__item">
+                    <a
+                      href="./"
+                      class="breadcrumb__link breadcrumb__link--home"
+                    >
+                      <i
+                        class="fa-solid fa-house-chimney"
+                        aria-hidden="true"
+                      ></i>
+                      <span class="visually-hidden">Gen 2 System</span>
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item">
+                    <a href="/foundations/" class="breadcrumb__link">
+                      Foundations
+                    </a>
+                  </li>
+
+                  <li class="breadcrumb__item" aria-current="page">Layout</li>
+                </ol>
+              </nav>
+
+              <h1>Layout</h1>
+              <p>
+                Layout defines how content is structured and organised across
+                Gen 2 Media Sites.
+              </p>
+            </div>
+          </header>
+
+          <!-- Main page content -->
+          <div class="container container--content">
+            <article class="content content--prose">
+              <!-- Overview -->
+              <section>
+                <h2>Overview</h2>
+                <p>
+                  The layout system prioritises clarity, predictability and
+                  flexibility to support a wide range of content types, from
+                  long-form reading to media-rich and discovery-led pages.
+                </p>
+                <p>
+                  This page defines layout principles and common structural
+                  patterns.
+                </p>
+                <p>
+                  Detailed compositions and variations are documented under
+                  <a href="page-types/">Page types</a> and
+                  <a href="patterns">Patterns</a>.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Principles -->
+              <section>
+                <h2>Principles</h2>
+                <p>
+                  Gen 2 layout is content-first and functional by default.<br />
+                  It exists to organise information clearly and support reading,
+                  scanning and interaction.
+                </p>
+                <p>
+                  Layout patterns are predictable and reusable. Users should be
+                  able to understand page structure quickly and apply that
+                  understanding across the system.
+                </p>
+                <p>
+                  Layout supports hierarchy without drawing attention to itself.
+                  Structural decisions should feel intentional but unobtrusive.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Layout structure -->
+              <section>
+                <h2>Layout structure</h2>
+                <p>
+                  Layout in Gen 2 is defined by structural patterns rather than
+                  fixed page designs.
+                </p>
+                <p>
+                  These patterns describe how primary content, supporting
+                  content and navigation relate to one another. They are reused
+                  across page types and contexts to maintain consistency and
+                  reduce cognitive load.
+                </p>
+                <p>
+                  Regardless of structure, primary content should remain clearly
+                  identifiable and visually prioritised.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Common layout structures -->
+              <section>
+                <h2>Common layout structures</h2>
+                <p>
+                  Gen 2 uses a small set of recurring layout structures to
+                  organise content consistently across the system.
+                </p>
+                <p>
+                  These structures describe how content is arranged, not how
+                  individual pages are styled.
+                </p>
+                <hr />
+
+                <!-- Single-column reading -->
+                <section>
+                  <div class="grid grid--cols grid--2">
+                    <div>
+                      <h3>Single-column reading</h3>
+
+                      <p>
+                        A focused layout where content flows vertically within a
+                        constrained width, optimised for long-form reading.
+                      </p>
+                    </div>
+
+                    <figure class="content__figure">
+                      <img
+                        src="https://placehold.co/640x360?text=Single-column+reading"
+                        alt="Placeholder illustration for the single-column reading layout structure."
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>
+                        Layout structure illustration (placeholder)
+                      </figcaption>
+                    </figure>
+                  </div>
+
+                  <pre
+                    class="code-block"
+                  ><code class="language-html">&lt;div class=&quot;l-page&quot;&gt;
+  &lt;main class=&quot;l-layout l-layout--single&quot; id=&quot;main-content&quot;&gt;
+    &lt;article class=&quot;l-region l-reading&quot;&gt;
+      &lt;header class=&quot;l-reading__header&quot;&gt;
+        &lt;h1&gt;Page title&lt;/h1&gt;
+        &lt;p&gt;One-sentence definition under the H1.&lt;/p&gt;
+      &lt;/header&gt;
+
+      &lt;section class=&quot;l-reading__body&quot;&gt;
+        &lt;p&gt;Primary reading content…&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+                </section>
+                <hr />
+
+                <!-- Main with supporting panel -->
+                <section>
+                  <div class="grid grid--cols grid--2">
+                    <div>
+                      <h3>Main with supporting panel</h3>
+
+                      <p>
+                        A layout where primary content is accompanied by
+                        secondary information such as metadata, filters or
+                        related content.
+                      </p>
+                    </div>
+
+                    <figure class="content__figure">
+                      <img
+                        src="https://placehold.co/640x360?text=Main+with+supporting+panel"
+                        alt="Placeholder illustration for the main with supporting panel layout structure."
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>
+                        Layout structure illustration (placeholder)
+                      </figcaption>
+                    </figure>
+                  </div>
+
+                  <pre
+                    class="code-block"
+                  ><code class="language-html">&lt;div class=&quot;l-page&quot;&gt;
+  &lt;main class=&quot;l-layout l-layout--main-panel&quot; id=&quot;main-content&quot;&gt;
+    &lt;section class=&quot;l-region l-main&quot; aria-label=&quot;Main content&quot;&gt;
+      &lt;h1&gt;Primary content&lt;/h1&gt;
+      &lt;p&gt;Main reading area…&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;aside class=&quot;l-region l-panel&quot; aria-label=&quot;Supporting content&quot;&gt;
+      &lt;p&gt;Supporting content…&lt;/p&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+                </section>
+                <hr />
+                <!-- Content with navigation -->
+                <section>
+                  <div class="grid grid--cols grid--2">
+                    <div>
+                      <h3>Content with navigation</h3>
+
+                      <p>
+                        A layout where navigational structures sit alongside
+                        primary content to support browsing and categorisation.
+                      </p>
+                    </div>
+
+                    <figure class="content__figure">
+                      <img
+                        src="https://placehold.co/640x360?text=Content+with+navigation"
+                        alt="Placeholder illustration for the content with navigation layout structure."
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>
+                        Layout structure illustration (placeholder)
+                      </figcaption>
+                    </figure>
+                  </div>
+
+                  <pre
+                    class="code-block"
+                  ><code class="language-html">&lt;div class=&quot;l-page&quot;&gt;
+  &lt;main class=&quot;l-layout l-layout--nav-content&quot; id=&quot;main-content&quot;&gt;
+    &lt;nav class=&quot;l-region l-nav&quot; aria-label=&quot;Section navigation&quot;&gt;
+      &lt;ul class=&quot;l-nav__list&quot;&gt;
+        &lt;li class=&quot;l-nav__item&quot;&gt;&lt;a class=&quot;l-nav__link&quot; href=&quot;#&quot;&gt;Navigation item&lt;/a&gt;&lt;/li&gt;
+        &lt;li class=&quot;l-nav__item&quot;&gt;&lt;a class=&quot;l-nav__link&quot; href=&quot;#&quot;&gt;Navigation item&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;section class=&quot;l-region l-content&quot; aria-label=&quot;Content&quot;&gt;
+      &lt;article class=&quot;l-content__body&quot;&gt;
+        &lt;h1&gt;Content area&lt;/h1&gt;
+        &lt;p&gt;Primary content…&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+                </section>
+                <hr />
+
+                <!-- Media-led layout -->
+                <section>
+                  <div class="grid grid--cols grid--2">
+                    <div>
+                      <h3>Media-led layout</h3>
+
+                      <p>
+                        A layout where media establishes the primary visual and
+                        structural focus of the page.
+                      </p>
+                    </div>
+
+                    <figure class="content__figure">
+                      <img
+                        src="https://placehold.co/640x360?text=Media-led+layout"
+                        alt="Placeholder illustration for the media-led layout structure."
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>
+                        Layout structure illustration (placeholder)
+                      </figcaption>
+                    </figure>
+                  </div>
+
+                  <pre
+                    class="code-block"
+                  ><code class="language-html">&lt;div class=&quot;l-page&quot;&gt;
+  &lt;main class=&quot;l-layout l-layout--media-led&quot; id=&quot;main-content&quot;&gt;
+    &lt;section class=&quot;l-region l-media&quot; aria-label=&quot;Primary media&quot;&gt;
+      &lt;figure class=&quot;l-media__figure&quot;&gt;
+        &lt;div class=&quot;l-media__frame&quot; role=&quot;region&quot; aria-label=&quot;Media player&quot;&gt;&lt;/div&gt;
+        &lt;figcaption class=&quot;l-media__caption&quot;&gt;Media context (optional)&lt;/figcaption&gt;
+      &lt;/figure&gt;
+    &lt;/section&gt;
+
+    &lt;section class=&quot;l-region l-media-content&quot; aria-label=&quot;Supporting content&quot;&gt;
+      &lt;h1&gt;Supporting content&lt;/h1&gt;
+      &lt;p&gt;Description, metadata, actions…&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+                </section>
+                <hr />
+
+                <!-- Grid-based content -->
+                <section>
+                  <div class="grid grid--cols grid--2">
+                    <div>
+                      <h3>Grid-based content</h3>
+
+                      <p>
+                        A layout that presents multiple items using a consistent
+                        grid structure, commonly used for browsing and
+                        discovery.
+                      </p>
+                    </div>
+
+                    <figure class="content__figure">
+                      <img
+                        src="https://placehold.co/640x360?text=Grid-based+content"
+                        alt="Placeholder illustration for the grid-based content layout structure."
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>
+                        Layout structure illustration (placeholder)
+                      </figcaption>
+                    </figure>
+                  </div>
+
+                  <pre
+                    class="code-block"
+                  ><code class="language-html">&lt;div class=&quot;l-page&quot;&gt;
+  &lt;main class=&quot;l-layout&quot; id=&quot;main-content&quot;&gt;
+    &lt;section class=&quot;l-region&quot; aria-label=&quot;Results&quot;&gt;
+      &lt;h1&gt;Browse&lt;/h1&gt;
+
+      &lt;ul class=&quot;l-grid&quot; aria-label=&quot;Content list&quot;&gt;
+        &lt;li class=&quot;l-grid__item&quot;&gt;Item&lt;/li&gt;
+        &lt;li class=&quot;l-grid__item&quot;&gt;Item&lt;/li&gt;
+        &lt;li class=&quot;l-grid__item&quot;&gt;Item&lt;/li&gt;
+        &lt;li class=&quot;l-grid__item&quot;&gt;Item&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+                </section>
+              </section>
+              <hr />
+
+              <!-- Content regions and flow -->
+              <section>
+                <h2>Content regions and flow</h2>
+                <p>
+                  Layouts are composed of distinct regions, such as headers,
+                  main content areas, supporting panels and footers.
+                </p>
+                <p>
+                  Each region has a clear purpose within the page. Content
+                  density may vary between regions, but overall hierarchy and
+                  reading order must remain clear.
+                </p>
+                <p>
+                  As layouts adapt across screen sizes, regions may reflow or
+                  stack. Meaning, priority and reading flow should not change.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Accessibility and consistency -->
+              <section>
+                <h2>Accessibility and consistency</h2>
+                <p>Layout must support inclusive use.</p>
+                <p>
+                  Reading order should follow the visual structure of the page.
+                  Content must not rely on position alone to convey meaning, and
+                  layouts must remain usable when zoomed, resized or viewed with
+                  assistive technologies.
+                </p>
+                <p>
+                  Spacing and alignment should support readability and
+                  interaction without introducing unnecessary complexity.
+                </p>
+              </section>
+              <hr />
+
+              <!-- Summary -->
+              <section>
+                <h2>Summary</h2>
+                <p>
+                  Layout in Gen 2 provides a predictable structural foundation
+                  for content and interaction.<br />
+                  Patterns prioritise clarity, hierarchy and reuse over visual
+                  novelty.
+                </p>
+                <!-- System anchor sentence -->
+                <p class="content--prose__emphasis">
+                  Gen 2 layout defines consistent structural patterns that
+                  support content hierarchy and reading flow across page types
+                  and contextsstrong
+                </p>
+              </section>
+            </article>
+          </div>
+
+          <footer
+            class="system-footer container container--content"
+            role="contentinfo"
+          >
+            <div class="system-footer__inner">
+              <p class="system-footer__copyright footer__copyright">
+                © <span class="current-year">2026</span> Cadmore Media
+              </p>
+
+              <nav class="system-footer__nav" aria-label="Footer links">
+                <a
+                  href="https://cadmore.media/privacy-policy"
+                  class="system-footer__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy policy
+                </a>
+              </nav>
+
+              <p class="system-footer__powered">
+                <a
+                  href="https://www.cadmore.media"
+                  class="system-footer__powered-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="system-footer__powered-label">Powered by</span>
+                  <img
+                    src="assets/images/c-logomark.svg"
+                    alt=""
+                    class="system-footer__powered-icon"
+                    aria-hidden="true"
+                  />
+                  <span class="system-footer__powered-text">
+                    Cadmore Media
+                  </span>
+                </a>
+              </p>
+            </div>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <script src="assets/js/00-core.js"></script>
+    <script src="assets/js/05-jquery.min.js"></script>
+    <script src="assets/js/30-component.side-nav.js"></script>
+    <script src="assets/js/90-system.navigation.js"></script>
+  </body>
+</html>

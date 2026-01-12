@@ -521,7 +521,7 @@ blockquote p {
 }
 
 .container--content>*:first-child {
-  margin-top: var(--space-8);
+  margin-top: var(--space-6);
 }
 
 /* Layout: Edge-aligned side navigation */
@@ -832,6 +832,11 @@ blockquote p {
   gap: var(--space-12);
 }
 
+.content--prose .content--prose__emphasis {
+  font-size: var(--text-md);
+    font-weight: var(--weight-medium);
+    margin-top: var(--space-4);
+}
 /* ==========================================================================
    ##) Card
    ========================================================================== */

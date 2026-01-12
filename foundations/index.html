@@ -1,232 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <title>Gen 2 System</title>
-   <script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gen 2 System</title>
+    <script>
       (function () {
-         var REPO = 'system';
-         // If hosted at https://username.github.io/REPO/... then use /REPO/
-         // Otherwise (local dev, custom domain, etc.) use /
-         var isProjectPages = location.hostname.endsWith('github.io');
-         var baseHref = isProjectPages ? '/' + REPO + '/' : '/';
+        var REPO = "system";
+        // If hosted at https://username.github.io/REPO/... then use /REPO/
+        // Otherwise (local dev, custom domain, etc.) use /
+        var isProjectPages = location.hostname.endsWith("github.io");
+        var baseHref = isProjectPages ? "/" + REPO + "/" : "/";
 
-         var base = document.createElement('base');
-         base.href = baseHref;
-         document.head.appendChild(base);
+        var base = document.createElement("base");
+        base.href = baseHref;
+        document.head.appendChild(base);
       })();
-   </script>
-   <!-- Now all relative URLs resolve correctly in BOTH environments -->
-   <link rel="stylesheet" href="assets/css/00-reset.css">
-   <link rel="stylesheet" href="assets/css/10-tokens.css">
-   <link rel="stylesheet" href="assets/css/00-core.css" />
-   <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
-   <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
-   <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
-   <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
-   <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
-   <link rel="icon" type="assets/images/png" href="/favicon-96x96.png" sizes="96x96" />
-   <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
-   <link rel="shortcut icon" href="assets/images/favicon.ico" />
-   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
-</head>
+    </script>
+    <!-- Now all relative URLs resolve correctly in BOTH environments -->
+    <link rel="stylesheet" href="assets/css/00-reset.css" />
+    <link rel="stylesheet" href="assets/css/10-tokens.css" />
+    <link rel="stylesheet" href="assets/css/00-core.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/05-fontawesome.all.css" />
+    <link rel="stylesheet" href="assets/css/30-component.side-nav.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-chrome.css" />
+    <link rel="stylesheet" href="assets/css/30-component.system-header.css" />
+    <link
+      rel="icon"
+      type="assets/images/png"
+      href="/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="assets/images/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/images/apple-touch-icon.png"
+    />
+  </head>
 
-<body>
-   <a class="skip-link" href="#main">Skip to main content</a>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
 
-   <header class="system-header" role="banner">
+    <header class="system-header" role="banner">
       <!-- Shared header -->
-   </header>
+    </header>
 
-   <main id="main" class="main" role="main">
+    <main id="main" class="main" role="main">
       <div class="layout--sidebar-edge">
-         <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
-         <div class="side-nav-responsive__rail" data-side-nav-rail>
-            <button type="button" class="side-nav-responsive__trigger" data-side-nav-trigger
-               aria-controls="side-nav-drawer" aria-expanded="false" aria-label="Open navigation">
-               <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
-                  <i class="fa-solid fa-bars"></i>
-               </span>
-               <span class="visually-hidden">Menu</span>
+        <!-- Mobile: drawer trigger (single menu, same markup as desktop) -->
+        <div class="side-nav-responsive__rail" data-side-nav-rail>
+          <button
+            type="button"
+            class="side-nav-responsive__trigger"
+            data-side-nav-trigger
+            aria-controls="side-nav-drawer"
+            aria-expanded="false"
+            aria-label="Open navigation"
+          >
+            <span class="side-nav-responsive__trigger-icon" aria-hidden="true">
+              <i class="fa-solid fa-bars"></i>
+            </span>
+            <span class="visually-hidden">Menu</span>
+          </button>
+          <!-- Brand -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile: backdrop for drawer -->
+        <div
+          class="side-nav-responsive__backdrop"
+          data-side-nav-backdrop
+          hidden
+        ></div>
+
+        <!-- Edge-aligned side navigation (flush left, outside container) -->
+        <nav
+          class="layout__sidebar layout__sidebar--edge"
+          aria-label="Section navigation"
+          id="side-nav-drawer"
+          data-side-nav-drawer
+        >
+          <!-- Brand (desktop) -->
+          <div class="layout__sidebar-brand">
+            <a href="./" class="sidebar-brand" aria-label="Go to homepage">
+              <img
+                src="assets/images/logo-color.png"
+                alt="Gen 2"
+                class="sidebar-brand__image"
+              />
+            </a>
+          </div>
+
+          <div class="side-nav" data-side-nav>
+            <!-- Mobile-only close  -->
+            <button
+              type="button"
+              class="side-nav__close"
+              data-side-nav-close
+              aria-label="Close navigation"
+            >
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
-            <!-- Brand -->
-            <div class="layout__sidebar-brand">
-               <a href="./" class="sidebar-brand" aria-label="Go to homepage">
-                  <img src="assets/images/logo-color.png" alt="Gen 2" class="sidebar-brand__image" />
-               </a>
-            </div>
-         </div>
+            <h2 id="gen2-system-nav" class="visually-hidden">
+              Gen 2 System Navigation
+            </h2>
 
-         <!-- Mobile: backdrop for drawer -->
-         <div class="side-nav-responsive__backdrop" data-side-nav-backdrop hidden></div>
+            <ul class="side-nav__list" role="list" id="nav-foundations">
+              <!-- Foundations -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-foundations"
+                >
+                  <span class="side-nav__label">Foundations</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
 
-         <!-- Edge-aligned side navigation (flush left, outside container) -->
-         <nav class="layout__sidebar layout__sidebar--edge" aria-label="Section navigation" id="side-nav-drawer"
-            data-side-nav-drawer>
-            <!-- Brand (desktop) -->
-            <div class="layout__sidebar-brand">
-               <a href="./" class="sidebar-brand" aria-label="Go to homepage">
-                  <img src="assets/images/logo-color.png" alt="Gen 2" class="sidebar-brand__image" />
-               </a>
-            </div>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-foundations"
+                  hidden
+                ></ul>
+              </li>
 
-            <div class="side-nav" data-side-nav>
-               <!-- Mobile-only close  -->
-               <button type="button" class="side-nav__close" data-side-nav-close aria-label="Close navigation">
-                  <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-               </button>
-               <h2 id="gen2-system-nav" class="visually-hidden">
-                  Gen 2 System Navigation
-               </h2>
+              <!-- Components -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-components"
+                >
+                  <span class="side-nav__label">Components</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-components"
+                  hidden
+                ></ul>
+              </li>
 
-               <ul class="side-nav__list" role="list" id="nav-foundations">
-                  <!-- Foundations -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-foundations">
-                        <span class="side-nav__label">Foundations</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
+              <!-- Patterns -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-patterns"
+                >
+                  <span class="side-nav__label">Patterns</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
 
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-foundations" hidden>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-patterns"
+                  hidden
+                ></ul>
+              </li>
 
-                     </ul>
-                  </li>
+              <!-- Page Types -->
+              <li class="side-nav__item side-nav__item--has-children">
+                <button
+                  type="button"
+                  class="side-nav__toggle"
+                  aria-expanded="false"
+                  aria-controls="side-nav-page-types"
+                >
+                  <span class="side-nav__label">Page Types</span>
+                  <span class="side-nav__chev" aria-hidden="true">
+                    <i class="fa-solid fa-angle-down"></i>
+                  </span>
+                </button>
 
-                  <!-- Components -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-components">
-                        <span class="side-nav__label">Components</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-components" hidden>
-                     </ul>
-                  </li>
+                <ul
+                  class="side-nav__sublist side-nav__sublist--level2"
+                  id="side-nav-page-types"
+                  hidden
+                ></ul>
+              </li>
 
-                  <!-- Patterns -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-patterns">
-                        <span class="side-nav__label">Patterns</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
+              <!-- Whitelabel -->
+              <li class="side-nav__item">
+                <a
+                  class="side-nav__link side-nav__link--level1"
+                  href="/foundations/index.html"
+                  >White labelling</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-patterns" hidden>
-                     </ul>
-                  </li>
-
-                  <!-- Page Types -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                     <button type="button" class="side-nav__toggle" aria-expanded="false"
-                        aria-controls="side-nav-page-types">
-                        <span class="side-nav__label">Page Types</span>
-                        <span class="side-nav__chev" aria-hidden="true">
-                           <i class="fa-solid fa-angle-down"></i>
-                        </span>
-                     </button>
-
-                     <ul class="side-nav__sublist side-nav__sublist--level2" id="side-nav-page-types" hidden>
-                     </ul>
-                  </li>
-
-                  <!-- Whitelabel -->
-                  <li class="side-nav__item side-nav__item--has-children">
-                  <li class="side-nav__item"><a class="side-nav__link side-nav__link--level1"
-                        href="/foundations/index.html">White labelling</a></li>
-                  </li>
-
-               </ul>
-            </div>
-         </nav>
-
-         <!-- Main content stays constrained in a container -->
-         <section class="layout__main" aria-label="Main content">
-            <!-- Page banner / hero -->
-            <header class="banner">
-               <div class="container container--content">
-
-                  <!-- Breadcrumb -->
-                  <nav class="breadcrumb" aria-label="Breadcrumb">
-                     <ol class="breadcrumb__list">
-                        <li class="breadcrumb__item">
-                           <a href="./" class="breadcrumb__link breadcrumb__link--home">
-                              <i class="fa-solid fa-house-chimney" aria-hidden="true"></i>
-                              <span class="visually-hidden">Gen 2 System</span>
-                           </a>
-                        </li>
-
-                        <li class="breadcrumb__item" aria-current="page">
-                           Foundations
-                        </li>
-                     </ol>
-                  </nav>
-
-                  <h1>Foundations</h1>
-                  <p class="banner__description">
-                     The core design decisions that underpin all Gen 2 Media Sites. Foundations define the visual
-                     language, spacing system, typography, colour usage, and layout principles that ensure consistency,
-                     accessibility, and scalability across products.
-                  </p>
-               </div>
-            </header>
-
-            <!-- Main page content -->
+        <!-- Main content stays constrained in a container -->
+        <section class="layout__main" aria-label="Main content">
+          <!-- Page banner / hero -->
+          <header class="banner">
             <div class="container container--content">
-               <article class="content">
-                  <h2 class="visually-hidden">Foundation pages</h2>
+              <!-- Breadcrumb -->
+              <nav class="breadcrumb" aria-label="Breadcrumb">
+                <ol class="breadcrumb__list">
+                  <li class="breadcrumb__item">
+                    <a
+                      href="./"
+                      class="breadcrumb__link breadcrumb__link--home"
+                    >
+                      <i
+                        class="fa-solid fa-house-chimney"
+                        aria-hidden="true"
+                      ></i>
+                      <span class="visually-hidden">Gen 2 System</span>
+                    </a>
+                  </li>
 
-                  <ul id="overview-grid-foundations" class="grid grid--cols grid--3" role="list">
+                  <li class="breadcrumb__item" aria-current="page">
+                    Foundations
+                  </li>
+                </ol>
+              </nav>
 
-                  </ul>
-               </article>
+              <h1>Foundations</h1>
+              <p class="banner__description">
+                The core design decisions that underpin all Gen 2 Media Sites.
+                Foundations define the visual language, spacing system,
+                typography, colour usage, and layout principles that ensure
+                consistency, accessibility, and scalability across products.
+              </p>
             </div>
+          </header>
 
-            <footer class="system-footer container container--content" role="contentinfo">
-               <div class="system-footer__inner">
+          <!-- Main page content -->
+          <div class="container container--content">
+            <article class="content">
+              <ul
+                id="overview-grid-foundations"
+                class="grid grid--cols grid--3"
+                role="list"
+              ></ul>
+            </article>
+            <hr />
 
-                  <p class="system-footer__copyright footer__copyright">
-                     © <span class="current-year">2026</span> Cadmore Media
-                  </p>
+            <article class="content content--prose">
+              <!-- Foundations overview -->
+              <section>
+                <h2>About Foundations</h2>
 
-                  <nav class="system-footer__nav" aria-label="Footer links">
-                     <a href="https://cadmore.media/privacy-policy" class="system-footer__link" target="_blank"
-                        rel="noopener noreferrer">
-                        Privacy policy
-                     </a>
-                  </nav>
+                <p>
+                  Foundations define the shared rules for colour, typography,
+                  layout, spacing and elevation across Gen 2 Media Sites.
+                </p>
 
-                  <p class="system-footer__powered">
-                     <a href="https://www.cadmore.media" class="system-footer__powered-link" target="_blank"
-                        rel="noopener noreferrer">
-                        <span class="system-footer__powered-label">Powered by</span>
-                        <img src="assets/images/c-logomark.svg" alt="" class="system-footer__powered-icon"
-                           aria-hidden="true" />
-                        <span class="system-footer__powered-text">
-                           Cadmore Media
-                        </span>
-                     </a>
-                  </p>
+                <p>
+                  They establish consistent structure, hierarchy and behaviour
+                  across page types and contexts. Themes adapt visual expression
+                  without changing foundational intent.
+                </p>
 
-               </div>
+                <p class="content--prose__emphasis">
+                  Foundations establish consistent structure, hierarchy and
+                  meaning across all Gen 2 Media Sites.
+                </p>
+              </section>
+            </article>
+          </div>
 
-            </footer>
+          <footer
+            class="system-footer container container--content"
+            role="contentinfo"
+          >
+            <div class="system-footer__inner">
+              <p class="system-footer__copyright footer__copyright">
+                © <span class="current-year">2026</span> Cadmore Media
+              </p>
 
-         </section>
+              <nav class="system-footer__nav" aria-label="Footer links">
+                <a
+                  href="https://cadmore.media/privacy-policy"
+                  class="system-footer__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Privacy policy
+                </a>
+              </nav>
+
+              <p class="system-footer__powered">
+                <a
+                  href="https://www.cadmore.media"
+                  class="system-footer__powered-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="system-footer__powered-label">Powered by</span>
+                  <img
+                    src="assets/images/c-logomark.svg"
+                    alt=""
+                    class="system-footer__powered-icon"
+                    aria-hidden="true"
+                  />
+                  <span class="system-footer__powered-text">
+                    Cadmore Media
+                  </span>
+                </a>
+              </p>
+            </div>
+          </footer>
+        </section>
       </div>
-   </main>
-   <script src="assets/js/00-core.js"></script>
-   <script src="assets/js/05-jquery.min.js"></script>
-   <script src="assets/js/30-component.side-nav.js"></script>
-   <script src="assets/js/90-system.navigation.js"></script>
-</body>
-
+    </main>
+    <script src="assets/js/00-core.js"></script>
+    <script src="assets/js/05-jquery.min.js"></script>
+    <script src="assets/js/30-component.side-nav.js"></script>
+    <script src="assets/js/90-system.navigation.js"></script>
+  </body>
 </html>

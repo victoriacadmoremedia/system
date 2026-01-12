@@ -55,6 +55,54 @@
   display: flex;
 }
 
+/* Pager */
+
+/* 30-component.article-pager.css (or similar) */
+
+.article-pager {
+  margin-top: 4rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid currentColor;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.article-pager__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.article-pager__link {
+  display: flex;
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-radius: 0.75rem;
+  align-items: center;
+  gap: .5rem;
+}
+
+.article-pager__kicker {
+  display: block;
+  font-size: 0.875rem;
+}
+
+.article-pager__title {
+  font-weight: 600;
+}
+
+.article-pager__link--next {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.article-pager__link--empty {
+  display: block;
+}
+
+.content--prose:has(.article-pager-wrap) {
+  margin-bottom: 0;
+}
+
 
 /* FOOTER */
 
